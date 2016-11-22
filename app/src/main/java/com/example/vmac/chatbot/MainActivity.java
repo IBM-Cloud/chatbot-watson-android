@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         // self user id is to identify the message owner
         // String selfUserId = MyApplication.getInstance().getPrefManager().getUser().getId();
 
-        mAdapter = new ChatRoomThreadAdapter(this,messageArrayList);
+        mAdapter = new ChatRoomThreadAdapter(messageArrayList);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setStackFromEnd(true);
@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
 
         ConversationService service = new ConversationService(ConversationService.VERSION_DATE_2016_09_20);
-        service.setUsernameAndPassword("c2f33c1e-aa31-4a5d-8ee1-a453a21e28f8", "K2wgQmt38ZBO");
+                    service.setUsernameAndPassword("c2f33c1e-aa31-4a5d-8ee1-a453a21e28f8", "K2wgQmt38ZBO");
 
         MessageRequest newMessage = new MessageRequest.Builder().inputText(inputmessage).build();
         MessageResponse response = service.message("f2a5bc02-886b-423b-bc92-5946a8c6f034", newMessage).execute();

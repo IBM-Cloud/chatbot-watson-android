@@ -7,7 +7,7 @@ package com.example.vmac.chatbot;
 import java.io.Serializable;
 
 public class Message implements Serializable {
-    String id, message, createdAt;
+    String id, message;
 
 
     public Message() {
@@ -16,7 +16,7 @@ public class Message implements Serializable {
     public Message(String id, String message, String createdAt) {
         this.id = id;
         this.message = message;
-        this.createdAt = createdAt;
+
 
     }
 
@@ -36,13 +36,6 @@ public class Message implements Serializable {
         this.message = message;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
 
 }
 

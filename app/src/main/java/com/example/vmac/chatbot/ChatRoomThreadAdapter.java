@@ -4,7 +4,6 @@ package com.example.vmac.chatbot;
  * Created by VMac on 17/11/16.
  */
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,12 +18,11 @@ public class ChatRoomThreadAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
 
     private int SELF = 100;
-    private Context mContext;
     private ArrayList<Message> messageArrayList;
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView message, timestamp;
+        TextView message;
 
         public ViewHolder(View view) {
             super(view);
@@ -34,8 +32,7 @@ public class ChatRoomThreadAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
 
-    public ChatRoomThreadAdapter(Context mContext,ArrayList<Message> messageArrayList) {
-        this.mContext = mContext;
+    public ChatRoomThreadAdapter(ArrayList<Message> messageArrayList) {
         this.messageArrayList=messageArrayList;
 
     }
