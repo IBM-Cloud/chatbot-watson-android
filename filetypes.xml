@@ -1,0 +1,9 @@
+<application>
+  <component name="FileTypeManager" version="17">
+    <extensionMap>
+      <mapping pattern="bg_bubble_white.xml" type="PLAIN_TEXT" />
+      <mapping pattern="bg_bubble_gray" type="XML" />
+      <mapping pattern="bg_bubble_white" type="XML" />
+    </extensionMap>
+  </component>
+</application>
