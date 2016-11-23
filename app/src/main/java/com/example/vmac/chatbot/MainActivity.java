@@ -1,6 +1,9 @@
 package com.example.vmac.chatbot;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -9,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.ibm.watson.developer_cloud.conversation.v1.ConversationService;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageRequest;
@@ -20,7 +24,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
 
-    private String chatRoomId;
     private RecyclerView recyclerView;
     private ChatRoomThreadAdapter mAdapter;
     private ArrayList messageArrayList;
@@ -74,7 +77,9 @@ public class MainActivity extends AppCompatActivity {
         btnSend.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                sendMessage();
+                if(checkInternetConnection()) {
+                    sendMessage();
+                }
             }
         });
     };
@@ -201,6 +206,27 @@ public class MainActivity extends AppCompatActivity {
             recyclerView.getLayoutManager().smoothScrollToPosition(recyclerView, null, mAdapter.getItemCount()-1);
 
         }*/
+
+    }
+
+    private boolean checkInternetConnection() {
+        // get Connectivity Manager object to check connection
+        ConnectivityManager cm =
+                (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
+        // Check for network connections
+        if (isConnected){
+            //Toast.makeText(this, " Connected ", Toast.LENGTH_LONG).show();
+            return true;
+        }
+       else {
+            Toast.makeText(this, " No Internet Connection available ", Toast.LENGTH_LONG).show();
+            return false;
+        }
 
     }
 
