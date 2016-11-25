@@ -1,4 +1,4 @@
-package com.example.vmac.chatbot;
+package com.example.vmac.WatBot;
 
 /**
  * Created by VMac on 17/11/16.
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 
 
-public class ChatRoomThreadAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
     private int SELF = 100;
@@ -32,7 +32,7 @@ public class ChatRoomThreadAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
 
-    public ChatRoomThreadAdapter(ArrayList<Message> messageArrayList) {
+    public ChatAdapter(ArrayList<Message> messageArrayList) {
         this.messageArrayList=messageArrayList;
 
     }

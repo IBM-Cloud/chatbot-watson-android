@@ -1,4 +1,4 @@
-package com.example.vmac.chatbot;
+package com.example.vmac.WatBot;
 
 import android.content.Context;
 import android.content.Intent;
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private RecyclerView recyclerView;
-    private ChatRoomThreadAdapter mAdapter;
+    private ChatAdapter mAdapter;
     private ArrayList messageArrayList;
     //private BroadcastReceiver mRegistrationBroadcastReceiver;
     private EditText inputMessage;
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         // self user id is to identify the message owner
         // String selfUserId = MyApplication.getInstance().getPrefManager().getUser().getId();
 
-        mAdapter = new ChatRoomThreadAdapter(messageArrayList);
+        mAdapter = new ChatAdapter(messageArrayList);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setStackFromEnd(true);
