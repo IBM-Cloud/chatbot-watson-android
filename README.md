@@ -290,10 +290,10 @@ dependencies {
                     try {
 
             ConversationService service = new ConversationService(ConversationService.VERSION_DATE_2016_09_20);
-            service.setUsernameAndPassword("Your Watson service UserName", "Your watson service PassWord");
+            service.setUsernameAndPassword("<username>", "<password>");
 
             MessageRequest newMessage = new MessageRequest.Builder().inputText(inputmessage).build();
-            MessageResponse response = service.message("Your Workspace Id", newMessage).execute();
+            MessageResponse response = service.message("<workspace_Id>", newMessage).execute();
             System.out.println(response);
             Message outMessage=new Message();
               if(response!=null)
@@ -468,7 +468,7 @@ dependencies {
  </p>Add the `password` and `username` in the following code,</p>
 
  ```
- service.setUsernameAndPassword("Your Watson service UserName", "Your watson service PassWord");
+ service.setUsernameAndPassword("<username>", "<password>");
 
  ```
 
@@ -484,7 +484,7 @@ dependencies {
 <p>Get the <strong>Workspace ID:</strong> and add it in the below code,</p>
 
 ```
-MessageResponse response = service.message("Your Workspace Id", newMessage).execute();
+MessageResponse response = service.message("workspace_Id", newMessage).execute();
 ```
 
 * Build and Run your app.
@@ -494,6 +494,8 @@ MessageResponse response = service.message("Your Workspace Id", newMessage).exec
 If you have followed all the above instructions, you should be happily chatting with your Wat(son)Bot. 
 
 ** Remember your bot will be talking to your Conversation Service (Intents, Entities and Dialog).**
+
+To learn more about Conversation and Other Watson Cognitive Services, <a href="https://www.ibm.com/watson/developercloud/" target="_blank">Click Here</a>
 
 ### Don't stop here!!! Keep coding and using Bluemix
 
