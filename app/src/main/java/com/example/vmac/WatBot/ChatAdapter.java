@@ -21,17 +21,6 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<Message> messageArrayList;
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView message;
-
-        public ViewHolder(View view) {
-            super(view);
-            message = (TextView) itemView.findViewById(R.id.message);
-            //timestamp = (TextView) itemView.findViewById(R.id.timestamp);
-        }
-    }
-
-
     public ChatAdapter(ArrayList<Message> messageArrayList) {
         this.messageArrayList=messageArrayList;
 
@@ -50,13 +39,12 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         } else {
             // WatBot message
             itemView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.chat_item_watson2, parent, false);
+                    .inflate(R.layout.chat_item_watson, parent, false);
         }
 
 
         return new ViewHolder(itemView);
     }
-
 
     @Override
     public int getItemViewType(int position) {
@@ -73,22 +61,21 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         Message message = messageArrayList.get(position);
         message.setMessage(message.getMessage());
         ((ViewHolder) holder).message.setText(message.getMessage());
-
-       /* if(message.getId().equals("2"))
-        {
-            String timestamp = "Watson Says";
-            ((ViewHolder) holder).timestamp.setText(timestamp);
-        }*/
         }
-
-
 
     @Override
     public int getItemCount() {
-       // if(messageArrayList !=null) {
             return messageArrayList.size();
-        //}
-       // return 1;
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView message;
+
+        public ViewHolder(View view) {
+            super(view);
+            message = (TextView) itemView.findViewById(R.id.message);
+
+        }
     }
 
 

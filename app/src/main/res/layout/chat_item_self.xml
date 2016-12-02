@@ -1,5 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="right"
@@ -14,8 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
-        android:textIsSelectable="true"
         android:background="@drawable/bg_bubble_gray"
+        android:textIsSelectable="true"
         android:textSize="14dp" />
 
 
