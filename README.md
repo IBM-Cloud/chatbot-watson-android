@@ -1,8 +1,14 @@
+# WatBot - An Android ChatBot powered by IBM Watson
+
 WatBot is an IBM Watson powered ChatBot running on <a href="http://vidyasagarmsc.com/tag/android/" target="_blank">Android</a> and using Conversation Service on IBM <a href="http://vidyasagarmsc.com/category/cloud/" target="_blank">Bluemix</a> (an open standards, cloud platform for building, running, and managing apps and services).
 <p align="center"><img src="https://raw.githubusercontent.com/VidyasagarMSC/WatBot/initial/Images/WatBot.png" width="350" /></p>
 
-<h2>Creation of Conversation Service</h2>
+## Creation of Conversation Service
+
 Watson Conversation combines a number of cognitive techniques to help you build and train a bot - defining intents and entities and crafting dialog to simulate conversation.
+
+![Watson Conversation Service Overview](https://github.com/VidyasagarMSC/WatBot/blob/initial/Images/Watson_Conversation_Service.png)
+
 <h3>Getting started</h3>
 Before you can start using the Conversation service, log in to IBM® Bluemix® and create a service instance.
 <ol>
