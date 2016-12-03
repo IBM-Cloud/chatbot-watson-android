@@ -18,6 +18,8 @@ import com.ibm.watson.developer_cloud.conversation.v1.model.MessageRequest;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList messageArrayList;
     private EditText inputMessage;
     private ImageButton btnSend;
+    private Map<String,Object> context = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         inputMessage = (EditText) findViewById(R.id.message);
         btnSend = (ImageButton) findViewById(R.id.btn_send);
+
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
@@ -48,19 +52,18 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
-
-        btnSend.setOnClickListener(new View.OnClickListener() {
+        btnSend.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (checkInternetConnection()) {
+                if(checkInternetConnection()) {
                     sendMessage();
                 }
             }
         });
-    }
+    };
 
 
-
+    // Sending a message to Watson Conversation Service
     private void sendMessage() {
         final String inputmessage = this.inputMessage.getText().toString().trim();
         Message inputMessage = new Message();
@@ -70,40 +73,46 @@ public class MainActivity extends AppCompatActivity {
         this.inputMessage.setText("");
         mAdapter.notifyDataSetChanged();
 
-        Thread thread = new Thread(new Runnable() {
+        Thread thread = new Thread(new Runnable(){
             public void run() {
                 try {
 
-                    ConversationService service = new ConversationService(ConversationService.VERSION_DATE_2016_09_20);
-                    service.setUsernameAndPassword("<username>", "<password>");
+        ConversationService service = new ConversationService(ConversationService.VERSION_DATE_2016_09_20);
+        service.setUsernameAndPassword("<username>", "<password>");
+        MessageRequest newMessage = new MessageRequest.Builder().inputText(inputmessage).context(context).build();
+        MessageResponse response = service.message("<workspace_id>", newMessage).execute();
 
-                    MessageRequest newMessage = new MessageRequest.Builder().inputText(inputmessage).build();
-                    MessageResponse response = service.message("<workspace_id>", newMessage).execute();
-                    Message outMessage = new Message();
-                    if (response != null) {
-                        if (response.getOutput() != null && response.getOutput().containsKey("text")) {
-
-                            final String outputmessage = response.getOutput().get("text").toString().replace("[", "").replace("]", "");
-                            outMessage.setMessage(outputmessage);
-                            outMessage.setId("2");
-                            messageArrayList.add(outMessage);
-                        } else {
-                            outMessage.setMessage("Please check your network connectivity");
-                            outMessage.setId("2");
-                            messageArrayList.add(outMessage);
-                        }
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                                mAdapter.notifyDataSetChanged();
-                                if (mAdapter.getItemCount() > 1) {
-                                    recyclerView.getLayoutManager().smoothScrollToPosition(recyclerView, null, mAdapter.getItemCount() - 1);
-
-                                }
-
-                            }
-                        });
+                if(response.getContext() !=null)
+                    {
+                        context.clear();
+                        context = response.getContext();
 
                     }
+        Message outMessage=new Message();
+          if(response!=null)
+          {
+              if(response.getOutput()!=null && response.getOutput().containsKey("text"))
+              {
+
+                  final String outputmessage = response.getOutput().get("text").toString().replace("[","").replace("]","");
+                  outMessage.setMessage(outputmessage);
+                  outMessage.setId("2");
+                  messageArrayList.add(outMessage);
+              }
+
+              runOnUiThread(new Runnable() {
+                  public void run() {
+                      mAdapter.notifyDataSetChanged();
+                     if (mAdapter.getItemCount() > 1) {
+                          recyclerView.getLayoutManager().smoothScrollToPosition(recyclerView, null, mAdapter.getItemCount()-1);
+
+                      }
+
+                  }
+              });
+
+
+          }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -112,27 +121,29 @@ public class MainActivity extends AppCompatActivity {
 
         thread.start();
 
-
     }
 
     private boolean checkInternetConnection() {
         // get Connectivity Manager object to check connection
         ConnectivityManager cm =
-                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
 
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         boolean isConnected = activeNetwork != null &&
                 activeNetwork.isConnectedOrConnecting();
 
         // Check for network connections
-        if (isConnected) {
+        if (isConnected){
             return true;
-        } else {
+        }
+       else {
             Toast.makeText(this, " No Internet Connection available ", Toast.LENGTH_LONG).show();
             return false;
         }
 
     }
+
+
 
 
 }
