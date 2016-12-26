@@ -4,6 +4,7 @@
       <mapping pattern="bg_bubble_white.xml" type="PLAIN_TEXT" />
       <mapping pattern="bg_bubble_watson" type="XML" />
       <mapping pattern="bg_bubble_self" type="XML" />
+      <mapping pattern="Menu_Item" type="XML" />
       <mapping pattern="bg_bubble_gray" type="XML" />
       <mapping pattern="bg_bubble_white" type="XML" />
     </extensionMap>
