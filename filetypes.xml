@@ -1,6 +1,7 @@
 <application>
   <component name="FileTypeManager" version="17">
     <extensionMap>
+      <mapping pattern="fragment_grid.xml" type="PLAIN_TEXT" />
       <mapping pattern="bg_bubble_white.xml" type="PLAIN_TEXT" />
       <mapping pattern="bg_bubble_watson" type="XML" />
       <mapping pattern="bg_bubble_self" type="XML" />
