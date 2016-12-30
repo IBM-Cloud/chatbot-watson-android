@@ -77,9 +77,9 @@ public class MainActivity extends AppCompatActivity {
                 try {
 
         ConversationService service = new ConversationService(ConversationService.VERSION_DATE_2016_09_20);
-        service.setUsernameAndPassword("c2f33c1e-aa31-4a5d-8ee1-a453a21e28f8", "K2wgQmt38ZBO");
+        service.setUsernameAndPassword("Your Watson service UserName", "Your watson service PassWord");
         MessageRequest newMessage = new MessageRequest.Builder().inputText(inputmessage).context(context).build();
-        MessageResponse response = service.message("f2a5bc02-886b-423b-bc92-5946a8c6f034", newMessage).execute();
+        MessageResponse response = service.message("Your Workspace Id", newMessage).execute();
 
                     //Passing Context of last conversation
                 if(response.getContext() !=null)
