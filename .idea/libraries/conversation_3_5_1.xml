@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="conversation-3.5.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ibm.watson.developer_cloud/conversation/3.5.1/81f215d3f03abbb69e1f14ff41bdaef806a25a4c/conversation-3.5.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ibm.watson.developer_cloud/conversation/3.5.1/3b645cf58621d0b34f8e0be1d6210e1d4f1d625c/conversation-3.5.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

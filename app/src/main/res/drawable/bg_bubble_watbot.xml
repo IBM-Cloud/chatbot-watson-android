@@ -5,7 +5,7 @@
 
     <!-- view background color -->
     <solid
-        android:color="@android:color/white" >
+        android:color="@color/bg_bubble_watbot" >
     </solid>
 
 

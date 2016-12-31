@@ -18,7 +18,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:background="@drawable/bg_bubble_white"
+        android:background="@drawable/bg_bubble_watbot"
         android:fontFamily="sans-serif"
         android:textColor="@android:color/black"
         android:textIsSelectable="true"

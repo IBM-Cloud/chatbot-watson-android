@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
         });
     };
 
-
     // Sending a message to Watson Conversation Service
     private void sendMessage() {
         final String inputmessage = this.inputMessage.getText().toString().trim();
@@ -78,10 +77,11 @@ public class MainActivity extends AppCompatActivity {
                 try {
 
         ConversationService service = new ConversationService(ConversationService.VERSION_DATE_2016_09_20);
-        service.setUsernameAndPassword("<username>", "<password>");
+        service.setUsernameAndPassword("Your Watson service UserName", "Your watson service PassWord");
         MessageRequest newMessage = new MessageRequest.Builder().inputText(inputmessage).context(context).build();
-        MessageResponse response = service.message("<workspace_id>", newMessage).execute();
+        MessageResponse response = service.message("Your Workspace Id", newMessage).execute();
 
+                    //Passing Context of last conversation
                 if(response.getContext() !=null)
                     {
                         context.clear();
@@ -123,6 +123,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Check Internet Connection
+     * @return
+     */
     private boolean checkInternetConnection() {
         // get Connectivity Manager object to check connection
         ConnectivityManager cm =
