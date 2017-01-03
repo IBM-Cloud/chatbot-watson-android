@@ -131,9 +131,11 @@ Android Studio is the Official IDE for Android. Android Studio provides the fast
 
 If you are an Android beginner and want to follow step-by-step instructions on how to code the Chat UI in Android Studio, Navigate to <a href="https://github.com/VidyasagarMSC/WatBot/tree/initial" target="_blank">WatBot-Initial</a> and Download the zip file.
 
-<a href="https://github.com/VidyasagarMSC/WatBot/tree/master#importing-the-code-to-android-studio" target="_blank">Click here</a> to Follow the instructions
-
 If you just want to know how to integrate Conversation Service in the Android App,
+
+```
+git clone https://github.com/VidyasagarMSC/WatBot.git
+```
 
 ## Configure the App
 
