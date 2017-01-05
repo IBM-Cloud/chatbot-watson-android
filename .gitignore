@@ -38,3 +38,4 @@ captures/
 
 # Keystore files
 *.jks
+src/main/res/drawable-w10dp/
