@@ -1,7 +1,7 @@
 # WatBot - An Android ChatBot powered by IBM Watson
 
 WatBot is an IBM Watson powered ChatBot running on <a href="http://vidyasagarmsc.com/tag/android/" target="_blank">Android</a> and using Conversation Service on IBM <a href="http://vidyasagarmsc.com/category/cloud/" target="_blank">Bluemix</a> (an open standards, cloud platform for building, running, and managing apps and services).
-<p align="center"><img src="https://raw.githubusercontent.com/VidyasagarMSC/WatBot/initial/Images/WatBot.png" width="350" /></p>
+<p align="center"><img src="images/WatBot_5X.png" width="350" /></p>
 
 ## Creation of Conversation Service
 
@@ -129,9 +129,15 @@ Post branching Intents and entities, this is how my Conversation Dialog on Bluem
 <h2>Coding the app on Android Studio</h2>
 Android Studio is the Official IDE for Android. Android Studio provides the fastest tools for building apps on every type of Android device.
 
-If you are an Android beginner and want to follow step-by-step instructions on how to code the Chat UI in Android Studio, Navigate to <a href="https://github.com/VidyasagarMSC/WatBot/tree/initial" target="_blank">WatBot-Initial</a> and Download the zip file.
+If you are an Android beginner and want to follow step-by-step instructions on how to code the Chat UI in Android Studio, 
+Clone WatBot-Initial branch, 
+```
+git clone https://github.com/VidyasagarMSC/WatBot.git -b initial
+```
+and follow the [instructions](https://github.com/VidyasagarMSC/WatBot/tree/initial#importing-the-code-to-android-studio)
 
-If you just want to know how to integrate Conversation Service in the Android App,
+or
+If you just want to know how to integrate Conversation Service in an Android App,
 
 ```
 git clone https://github.com/VidyasagarMSC/WatBot.git
