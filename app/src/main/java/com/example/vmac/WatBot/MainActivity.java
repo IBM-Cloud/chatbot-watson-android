@@ -63,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
         this.initialRequest = true;
         sendMessage();
 
-        //Watson Text-to-Speech
+        //Watson Text-to-Speech Service on Bluemix
         final TextToSpeech service = new TextToSpeech();
-        service.setUsernameAndPassword("<Text to Speech Username>", "<Text to Speech Password>");
+        service.setUsernameAndPassword("Your Text-to-Speech service username>", "Your Text-to-Speech password");
 
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new ClickListener() {
             @Override
@@ -135,9 +135,9 @@ public class MainActivity extends AppCompatActivity {
                 try {
 
         ConversationService service = new ConversationService(ConversationService.VERSION_DATE_2016_09_20);
-        service.setUsernameAndPassword("<Conversation Username>", "<Conversation Password");
+        service.setUsernameAndPassword("Your Watson service UserName", "Your watson service PassWord");
         MessageRequest newMessage = new MessageRequest.Builder().inputText(inputmessage).context(context).build();
-        MessageResponse response = service.message("Workspace_id", newMessage).execute();
+        MessageResponse response = service.message("Your Workspace Id", newMessage).execute();
 
                     //Passing Context of last conversation
                 if(response.getContext() !=null)
