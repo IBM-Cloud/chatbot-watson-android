@@ -1,6 +1,7 @@
 package com.example.vmac.WatBot;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -13,9 +14,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.ibm.watson.developer_cloud.android.library.audio.StreamPlayer;
 import com.ibm.watson.developer_cloud.conversation.v1.ConversationService;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageRequest;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
+import com.ibm.watson.developer_cloud.text_to_speech.v1.TextToSpeech;
+import com.ibm.watson.developer_cloud.text_to_speech.v1.model.Voice;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText inputMessage;
     private ImageButton btnSend;
     private Map<String,Object> context = new HashMap<>();
+    StreamPlayer streamPlayer;
+    private boolean initialRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +45,9 @@ public class MainActivity extends AppCompatActivity {
 
         inputMessage = (EditText) findViewById(R.id.message);
         btnSend = (ImageButton) findViewById(R.id.btn_send);
-
+        String customFont = "Montserrat-Regular.ttf";
+        Typeface typeface = Typeface.createFromAsset(getAssets(), customFont);
+        inputMessage.setTypeface(typeface);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
@@ -51,6 +59,43 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
+        this.inputMessage.setText("");
+        this.initialRequest = true;
+        sendMessage();
+
+        //Watson Text-to-Speech
+        final TextToSpeech service = new TextToSpeech();
+        service.setUsernameAndPassword("4a8df853-d6ef-4a2d-8ae3-d2f7f6d4315e", "pICFn87UlxPJ");
+
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new ClickListener() {
+            @Override
+            public void onClick(View view, final int position) {
+                Thread thread = new Thread(new Runnable() {
+                    public void run() {
+                        Message audioMessage;
+                        try {
+
+                            audioMessage =(Message) messageArrayList.get(position);
+                            streamPlayer = new StreamPlayer();
+                            if(audioMessage != null && !audioMessage.getMessage().isEmpty())
+                                //Change the Voice format and choose from the available choices
+                                streamPlayer.playStream(service.synthesize(audioMessage.getMessage(), Voice.EN_LISA).execute());
+                            else
+                                streamPlayer.playStream(service.synthesize("No Text Specified", Voice.EN_LISA).execute());
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                thread.start();
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
 
         btnSend.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -64,11 +109,24 @@ public class MainActivity extends AppCompatActivity {
 
     // Sending a message to Watson Conversation Service
     private void sendMessage() {
+
         final String inputmessage = this.inputMessage.getText().toString().trim();
-        Message inputMessage = new Message();
-        inputMessage.setMessage(inputmessage);
-        inputMessage.setId("1");
-        messageArrayList.add(inputMessage);
+        if(!this.initialRequest) {
+            Message inputMessage = new Message();
+            inputMessage.setMessage(inputmessage);
+            inputMessage.setId("1");
+            messageArrayList.add(inputMessage);
+        }
+        else
+        {
+            Message inputMessage = new Message();
+            inputMessage.setMessage(inputmessage);
+            inputMessage.setId("100");
+            this.initialRequest = false;
+            Toast.makeText(getApplicationContext(),"Tap on the message for Voice",Toast.LENGTH_LONG).show();
+
+        }
+
         this.inputMessage.setText("");
         mAdapter.notifyDataSetChanged();
 
@@ -77,9 +135,9 @@ public class MainActivity extends AppCompatActivity {
                 try {
 
         ConversationService service = new ConversationService(ConversationService.VERSION_DATE_2016_09_20);
-        service.setUsernameAndPassword("Your Watson service UserName", "Your watson service PassWord");
+        service.setUsernameAndPassword("c2f33c1e-aa31-4a5d-8ee1-a453a21e28f8", "K2wgQmt38ZBO");
         MessageRequest newMessage = new MessageRequest.Builder().inputText(inputmessage).context(context).build();
-        MessageResponse response = service.message("Your Workspace Id", newMessage).execute();
+        MessageResponse response = service.message("f2a5bc02-886b-423b-bc92-5946a8c6f034", newMessage).execute();
 
                     //Passing Context of last conversation
                 if(response.getContext() !=null)

@@ -29,7 +29,9 @@ dependencies {
     compile 'com.android.support:design:24.1.1'
     compile 'com.squareup.okhttp3:okhttp:3.4.2'
     compile 'com.google.code.gson:gson:2.8.0'
-    compile 'com.ibm.watson.developer_cloud:conversation:3.5.1'
+    compile 'com.ibm.watson.developer_cloud:conversation:3.5.3'
+    compile 'com.ibm.watson.developer_cloud:text-to-speech:3.5.3'
+    compile 'com.ibm.watson.developer_cloud:android-sdk:0.2.1'
     testCompile 'junit:junit:4.12'
 
 }
