@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Watson Text-to-Speech Service on Bluemix
         final TextToSpeech service = new TextToSpeech();
-        service.setUsernameAndPassword("Your Text-to-Speech service username>", "Your Text-to-Speech password");
+        service.setUsernameAndPassword("Your Text-to-Speech service username", "Your Text-to-Speech password");
 
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new ClickListener() {
             @Override
