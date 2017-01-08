@@ -189,7 +189,27 @@ MessageResponse response = service.message("Your Workspace Id", newMessage).exec
 
 * Build and Run your app.
 
-## Chat with your own WatBot 
+## Enable Text to Speech 
+
+* Create a Watson Text to Speech(TTS) service on [Bluemix](https://console.ng.bluemix.net/catalog/services/text-to-speech/?taxonomyNavigation=apps) 
+* Navigate to Service Credentials tab and click on "View Credentials".
+
+On Line 68 of MainActivity.java, replace the username and password placeholders with the TTS service credentials
+
+```
+service.setUsernameAndPassword("Your Text-to-Speech service username", "Your Text-to-Speech password");
+```
+* Build and Run your app.
+
+Now when you TAP on any message, the text will be heard via a Voice (Voice.EN_LISA). You can change the voice formats in the code (Lines 82-84 0f MainActivity.java)
+
+<strong>Note: </strong> The required gradle entries for TTS is already included in the build.gradle file 
+```
+compile 'com.ibm.watson.developer_cloud:text-to-speech:3.5.3'
+compile 'com.ibm.watson.developer_cloud:android-sdk:0.2.1'
+```
+
+### Chat with your own WatBot 
 
 If you have followed all the above instructions, you should be happily chatting with your Wat(son)Bot. 
 
