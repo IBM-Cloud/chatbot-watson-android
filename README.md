@@ -5,6 +5,17 @@
 WatBot is an IBM Watson powered ChatBot running on <a href="http://vidyasagarmsc.com/tag/android/" target="_blank">Android</a> and using Conversation Service on IBM <a href="http://vidyasagarmsc.com/category/cloud/" target="_blank">Bluemix</a> (an open standards, cloud platform for building, running, and managing apps and services).
 <p align="center"><img src="images/WatBot_5X.png" width="350" /></p>
 
+Check this [blog post](http://vidyasagarmsc.com/an-android-chatbot-powered-by-ibm-watson/) for step-by-step instructions. 
+
+<h2>Coding the app on Android Studio</h2>
+Android Studio is the Official IDE for Android. Android Studio provides the fastest tools for building apps on every type of Android device.
+
+Clone the repo and import the code in Android Studio,
+
+```
+git clone https://github.com/VidyasagarMSC/WatBot.git
+```
+
 ## Creation of Conversation Service
 
 Watson Conversation combines a number of cognitive techniques to help you build and train a bot - defining intents and entities and crafting dialog to simulate conversation.
@@ -24,9 +35,10 @@ Before you can start using the Conversation service, log in to IBM® Bluemix® a
 Check the “Pricing Plans” for data limits for the Conversation service</li>
  	<li>Click <strong>Create</strong>. You’ll see details about your new instance in the “Service Details” page.</li>
 </ol>
-<!--more-->
+
+
 <h3>Creating a Workspace</h3>
-You use the Conversation tool to create workspaces by either creating a new workspace from scratch, or  by importing a workspace from a JSON file. You can also duplicate an existing workspace within the same service instance.
+You use the Conversation tool to create workspaces by either creating a new workspace from scratch, or  by importing a workspace from a [JSON](https://github.com/VidyasagarMSC/WatBot/blob/master/sample.json) file. You can also duplicate an existing workspace within the same service instance.
 <ol>
  	<li>If the Service Details page is not already open, click your Conversation service instance on the Bluemix console. (When you create a service instance, the Service Details page displays.)</li>
  	<li>On the “Service Details” page, scroll down to <strong>Conversation tooling</strong> and click <strong>Launch tool</strong>.</li>
@@ -128,22 +140,6 @@ The dialog component of the Conversation service uses the intents and entities t
 Post branching Intents and entities, this is how my Conversation Dialog on Bluemix looks like
 
 ![](https://github.com/VidyasagarMSC/WatBot/blob/initial/Images/Conversation_Service_Bluemix.png)
-<h2>Coding the app on Android Studio</h2>
-Android Studio is the Official IDE for Android. Android Studio provides the fastest tools for building apps on every type of Android device.
-
-If you are an Android beginner and want to follow step-by-step instructions on how to code the Chat UI in Android Studio, 
-Clone WatBot-Initial branch, 
-```
-git clone https://github.com/VidyasagarMSC/WatBot.git -b initial
-```
-and follow the [instructions](https://github.com/VidyasagarMSC/WatBot/tree/initial#importing-the-code-to-android-studio)
-
-or
-If you just want to know how to integrate Conversation Service in an Android App,
-
-```
-git clone https://github.com/VidyasagarMSC/WatBot.git
-```
 
 ## Configure the App
 
