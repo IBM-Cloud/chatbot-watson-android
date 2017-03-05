@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="core-2.2.7">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ibm.mobilefirstplatform.clientsdk.android/core/2.2.7/19dea1e04540a09362da2572d09f8b4dffaad61e/core-2.2.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ibm.mobilefirstplatform.clientsdk.android/core/2.2.7/139b8b74817917d7f80951c6c5d802f3d3ae759/core-2.2.7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

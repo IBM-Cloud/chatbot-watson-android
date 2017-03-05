@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="analyticsapi-1.1.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ibm.mobilefirstplatform.clientsdk.android/analyticsapi/1.1.1/4dea113abdde297a40c472987b4d03886c9228a8/analyticsapi-1.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ibm.mobilefirstplatform.clientsdk.android/analyticsapi/1.1.1/b4b9a01f156152a201bc58f49edff629f13a1dd8/analyticsapi-1.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

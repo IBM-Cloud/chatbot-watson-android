@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">WatBot</string>
-    <string name="what_s_on_your_mind">What\'s on your mind?</string>
+    <string name="app_name">Watson Chabot</string>
+    <string name="what_s_on_your_mind">Enter your query</string>
 </resources>

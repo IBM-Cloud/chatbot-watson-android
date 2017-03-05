@@ -25,6 +25,17 @@
         android:orientation="horizontal"
         android:weightSum="4">
 
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/btn_record"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:background="@null"
+            android:elevation="0dp"
+            android:paddingLeft="10dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_mic" />
+
         <EditText
             android:id="@+id/message"
             android:layout_width="0dp"
