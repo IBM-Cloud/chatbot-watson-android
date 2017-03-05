@@ -2,10 +2,8 @@
 
 [![Build Status](https://travis-ci.org/VidyasagarMSC/WatBot.svg?branch=master)](https://travis-ci.org/VidyasagarMSC/WatBot)
 
-WatBot is an IBM Watson powered ChatBot running on <a href="http://vidyasagarmsc.com/tag/android/" target="_blank">Android</a> and using Conversation Service on IBM <a href="http://vidyasagarmsc.com/category/cloud/" target="_blank">Bluemix</a> (an open standards, cloud platform for building, running, and managing apps and services).
+WatBot is an IBM Watson powered ChatBot running on Android</a> and using Conversation Service on IBM <a href="http://vidyasagarmsc.com/category/cloud/" target="_blank">Bluemix</a> (an open standards, cloud platform for building, running, and managing apps and services).
 <p align="center"><img src="images/WatBot_5X.png" width="350" /></p>
-
-Check this [blog post](http://vidyasagarmsc.com/an-android-chatbot-powered-by-ibm-watson/) for step-by-step instructions. 
 
 <h2>Coding the app on Android Studio</h2>
 Android Studio is the Official IDE for Android. Android Studio provides the fastest tools for building apps on every type of Android device.
@@ -13,7 +11,31 @@ Android Studio is the Official IDE for Android. Android Studio provides the fast
 Clone the repo and import the code in Android Studio,
 
 ```
-git clone https://github.com/VidyasagarMSC/WatBot.git
+git clone https://github.com/IBM-Bluemix/chatbot-watson-android/blob/master/License.txt
+```
+## Config.xml 
+
+Navigate to file app/src/main/res/values/config.xml and provide Bluemix service credentials 
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Watson Conversation Service Credentials --> 
+    <string name="workspace_id"></string> 
+    <string name="conversation_username"></string> 
+    <string name="conversation_password"></string>  
+
+    <!--Watson Speech-To-Text Service Credentials--> 
+    <string name="STT_username"></string> 
+    <string name="STT_password"></string>  
+
+    <!--Watson Text-To-Speech Service Credentials--> 
+    <string name="TTS_username"></string> 
+    <string name="TTS_password"></string>  
+
+    <!--Bluemix Mobile Analytics--> 
+    <string name="mobileanalytics_apikey"></string>
+</resources>
 ```
 
 ## Creation of Conversation Service
@@ -38,7 +60,7 @@ Check the “Pricing Plans” for data limits for the Conversation service</li>
 
 
 <h3>Creating a Workspace</h3>
-You use the Conversation tool to create workspaces by either creating a new workspace from scratch, or  by importing a workspace from a [JSON](https://github.com/VidyasagarMSC/WatBot/blob/master/sample.json) file. You can also duplicate an existing workspace within the same service instance.
+You use the Conversation tool to create workspaces by either creating a new workspace from scratch, or  by importing a workspace from a [JSON](https://github.com/IBM-Bluemix/chatbot-watson-android/blob/master/sample.json) file. You can also duplicate an existing workspace within the same service instance.
 <ol>
  	<li>If the Service Details page is not already open, click your Conversation service instance on the Bluemix console. (When you create a service instance, the Service Details page displays.)</li>
  	<li>On the “Service Details” page, scroll down to <strong>Conversation tooling</strong> and click <strong>Launch tool</strong>.</li>
@@ -161,7 +183,7 @@ Post branching Intents and entities, this is how my Conversation Dialog on Bluem
 
 ![Conversation Credentials](https://github.com/VidyasagarMSC/WatBot/blob/initial/Images/usernamePassword.png)
 
- </p>Add the `password` and `username` in the following code,</p>
+ </p>Add the `workspace_id`,`password` and `username` in config.xml ,</p>
 
  ```
  service.setUsernameAndPassword("Your Watson service UserName", "Your watson service PassWord");
@@ -189,12 +211,7 @@ MessageResponse response = service.message("Your Workspace Id", newMessage).exec
 
 * Create a Watson Text to Speech(TTS) service on [Bluemix](https://console.ng.bluemix.net/catalog/services/text-to-speech/?taxonomyNavigation=apps) 
 * Navigate to Service Credentials tab and click on "View Credentials".
-
-On Line 68 of MainActivity.java, replace the username and password placeholders with the TTS service credentials
-
-```
-service.setUsernameAndPassword("Your Text-to-Speech service username", "Your Text-to-Speech password");
-```
+* Add the credentials to config.xml
 * Build and Run your app.
 
 Now when you TAP on any message, the text will be heard via a Voice (Voice.EN_LISA). You can change the voice formats in the code (Lines 82-84 0f MainActivity.java)
@@ -202,7 +219,20 @@ Now when you TAP on any message, the text will be heard via a Voice (Voice.EN_LI
 <strong>Note: </strong> The required gradle entries for TTS is already included in the build.gradle file 
 ```
 compile 'com.ibm.watson.developer_cloud:text-to-speech:3.5.3'
-compile 'com.ibm.watson.developer_cloud:android-sdk:0.2.1'
+compile 'com.ibm.watson.developer_cloud:android-sdk:0.2.3'
+```
+## Enable Speech to Text
+
+* Create a Watson Speech-To-Text (STT) service on [Bluemix](https://console.ng.bluemix.net/catalog/services/speech-to-text/?taxonomyNavigation=apps) 
+* Navigate to Service Credentials tab and click on "View Credentials".
+* Add the credentials to config.xml
+* Build and Run your app.
+
+<strong>Note: </strong> The required gradle entries for STT is already included in the build.gradle file 
+```
+compile 'com.ibm.watson.developer_cloud:speech-to-text:3.5.3'
+compile 'com.ibm.watson.developer_cloud:android-sdk:0.2.3'
+compile 'com.squareup.okhttp3:okhttp-ws:3.4.2'
 ```
 
 ### Chat with your own WatBot 
@@ -212,3 +242,7 @@ If you have followed all the above instructions, you should be happily chatting 
 ** Remember your bot will be talking to your Conversation Service (Intents, Entities and Dialog).**
 
 ### Don't stop here!!! Keep coding and using Bluemix
+
+License
+
+See [License.txt](https://github.com/IBM-Bluemix/chatbot-watson-android/blob/master/License.txt) for license information.
