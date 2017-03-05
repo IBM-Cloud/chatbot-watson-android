@@ -1,8 +1,8 @@
 # WatBot - An Android ChatBot powered by IBM Watson
 
-[![Build Status](https://travis-ci.org/VidyasagarMSC/WatBot.svg?branch=master)](https://travis-ci.org/VidyasagarMSC/WatBot)
+[![Build Status](https://travis-ci.org/IBM-Bluemix/chatbot-watson-android.svg?branch=master)](https://travis-ci.org/VidyasagarMSC/WatBot)
 
-WatBot is an IBM Watson powered ChatBot running on Android</a> and using Conversation Service on IBM <a href="http://vidyasagarmsc.com/category/cloud/" target="_blank">Bluemix</a> (an open standards, cloud platform for building, running, and managing apps and services).
+WatBot is an IBM Watson powered ChatBot running on Android and using Conversation, Text-to-Speech, Speech-to-Text Services on IBM Bluemix (an open standards, cloud platform for building, running, and managing apps and services).
 <p align="center"><img src="images/WatBot_5X.png" width="350" /></p>
 
 <h2>Coding the app on Android Studio</h2>
@@ -11,7 +11,7 @@ Android Studio is the Official IDE for Android. Android Studio provides the fast
 Clone the repo and import the code in Android Studio,
 
 ```
-git clone https://github.com/IBM-Bluemix/chatbot-watson-android/blob/master/License.txt
+git clone https://github.com/IBM-Bluemix/chatbot-watson-android.git
 ```
 ## Config.xml 
 
