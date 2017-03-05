@@ -1,6 +1,6 @@
 # WatBot - An Android ChatBot powered by IBM Watson
 
-[![Build Status](https://travis-ci.org/IBM-Bluemix/chatbot-watson-android.svg?branch=master)](https://travis-ci.org/VidyasagarMSC/WatBot)
+[![Build Status](https://travis-ci.org/IBM-Bluemix/chatbot-watson-android.svg?branch=master)](https://travis-ci.org/IBM-Bluemix/chatbot-watson-android)
 
 WatBot is an IBM Watson powered ChatBot running on Android and using Conversation, Text-to-Speech, Speech-to-Text Services on IBM Bluemix (an open standards, cloud platform for building, running, and managing apps and services).
 <p align="center"><img src="images/WatBot_5X.png" width="350" /></p>
@@ -183,7 +183,7 @@ Post branching Intents and entities, this is how my Conversation Dialog on Bluem
 
 ![Conversation Credentials](https://github.com/VidyasagarMSC/WatBot/blob/initial/Images/usernamePassword.png)
 
- </p>Add the `workspace_id`,`password` and `username` in config.xml ,</p>
+ </p>Add the `password` and `username` in config.xml ,</p>
 
  ```
  service.setUsernameAndPassword("Your Watson service UserName", "Your watson service PassWord");
@@ -199,7 +199,7 @@ Post branching Intents and entities, this is how my Conversation Dialog on Bluem
 <img src="https://github.com/VidyasagarMSC/WatBot/blob/initial/Images/workspace2.png" width="350">
 </p>
 
-<p>Get the <strong>Workspace ID:</strong> and add it in the below code,</p>
+<p>Get the <strong>Workspace ID:</strong> and add it in config.xml,</p>
 
 ```
 MessageResponse response = service.message("Your Workspace Id", newMessage).execute();
