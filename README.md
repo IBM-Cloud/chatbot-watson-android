@@ -238,6 +238,10 @@ compile 'com.squareup.okhttp3:okhttp-ws:3.4.2'
 
 * Create a [Mobile Analytics](https://console.ng.bluemix.net/catalog/services/mobile-analytics/?taxonomyNavigation=apps) service on Bluemix.
 * Click on Service Credentials tab and add the apikey to config.xml.
+* Add the below entry to build.gradle(module:app) under dependencies
+```
+compile 'com.ibm.mobilefirstplatform.clientsdk.android:analytics:1.+'
+```
 * Add the below code to MainActivity.Java
 ```
 //Bluemix Mobile Analytics
