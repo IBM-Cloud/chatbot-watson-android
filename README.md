@@ -234,6 +234,44 @@ compile 'com.ibm.watson.developer_cloud:speech-to-text:3.5.3'
 compile 'com.ibm.watson.developer_cloud:android-sdk:0.2.3'
 compile 'com.squareup.okhttp3:okhttp-ws:3.4.2'
 ```
+## Mobile Analytics 
+
+* Create a [Mobile Analytics](https://console.ng.bluemix.net/catalog/services/mobile-analytics/?taxonomyNavigation=apps) service on Bluemix.
+* Click on Service Credentials tab and add the apikey to config.xml.
+* Add the below code to MainActivity.Java
+```
+//Bluemix Mobile Analytics
+        BMSClient.getInstance().initialize(getApplicationContext(), BMSClient.REGION_US_SOUTH);
+        //Analytics is configured to record lifecycle events.
+        Analytics.init(getApplication(), "WatBot", analytics_APIKEY, false, Analytics.DeviceEvent.ALL);
+        //Analytics.send();
+        myLogger = Logger.getLogger("myLogger");
+        // Send recorded usage analytics to the Mobile Analytics Service
+        Analytics.send(new ResponseListener() {
+            @Override
+            public void onSuccess(Response response) {
+                // Handle Analytics send success here.
+            }
+
+            @Override
+            public void onFailure(Response response, Throwable throwable, JSONObject jsonObject) {
+                // Handle Analytics send failure here.
+            }
+        });
+
+        // Send logs to the Mobile Analytics Service
+        Logger.send(new ResponseListener() {
+            @Override
+            public void onSuccess(Response response) {
+                // Handle Logger send success here.
+            }
+
+            @Override
+            public void onFailure(Response response, Throwable throwable, JSONObject jsonObject) {
+                // Handle Logger send failure here.
+            }
+        });
+```
 
 ### Chat with your own WatBot 
 
@@ -243,6 +281,6 @@ If you have followed all the above instructions, you should be happily chatting 
 
 ### Don't stop here!!! Keep coding and using Bluemix
 
-License
+## License
 
 See [License.txt](https://github.com/IBM-Bluemix/chatbot-watson-android/blob/master/License.txt) for license information.
