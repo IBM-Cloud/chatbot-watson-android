@@ -1,0 +1,429 @@
+{
+	"name": "bluedroid",
+	"created": "2016-11-17T06:04:10.409Z",
+	"intents": [{
+		"intent": "about_us",
+		"created": "2016-11-17T06:16:29.294Z",
+		"updated": "2016-11-20T15:05:25.565Z",
+		"examples": [{
+			"text": "tell me about yourself?",
+			"created": "2016-11-17T06:16:29.294Z",
+			"updated": "2016-11-29T17:31:45.525Z"
+		}, {
+			"text": "What is BlueDroid?",
+			"created": "2016-11-17T06:16:29.294Z",
+			"updated": "2016-11-29T17:31:45.525Z"
+		}, {
+			"text": "Where am I?",
+			"created": "2016-11-20T15:05:25.565Z",
+			"updated": "2016-11-29T17:31:45.525Z"
+		}, {
+			"text": "who are bluecoders?",
+			"created": "2016-11-17T06:16:29.294Z",
+			"updated": "2016-11-29T17:31:45.525Z"
+		}, {
+			"text": "who is organising this event?",
+			"created": "2016-11-17T06:16:29.294Z",
+			"updated": "2016-11-29T17:31:45.525Z"
+		}],
+		"description": null
+	}, {
+		"intent": "cloud",
+		"created": "2016-11-17T07:10:32.774Z",
+		"updated": "2016-11-17T07:10:32.774Z",
+		"examples": [{
+			"text": "What is Bluemix?",
+			"created": "2016-11-17T07:10:32.774Z",
+			"updated": "2016-11-29T17:52:51.536Z"
+		}, {
+			"text": "What is Cloud?",
+			"created": "2016-11-17T07:10:32.774Z",
+			"updated": "2016-11-29T17:52:51.536Z"
+		}, {
+			"text": "What is Cloud Computing?",
+			"created": "2016-11-17T07:10:32.774Z",
+			"updated": "2016-11-29T17:52:51.536Z"
+		}, {
+			"text": "What is Watson?",
+			"created": "2016-11-17T07:10:32.774Z",
+			"updated": "2016-11-29T17:52:51.536Z"
+		}, {
+			"text": "Why Bluemix?",
+			"created": "2016-11-17T07:10:32.774Z",
+			"updated": "2016-11-29T17:52:51.536Z"
+		}],
+		"description": null
+	}, {
+		"intent": "college",
+		"created": "2016-11-21T07:52:56.705Z",
+		"updated": "2016-11-21T07:52:56.705Z",
+		"examples": [{
+			"text": "Where is Christ University located?",
+			"created": "2016-11-21T07:52:56.705Z",
+			"updated": "2016-11-29T17:31:45.525Z"
+		}, {
+			"text": "Where is the Forum?",
+			"created": "2016-11-21T07:52:56.705Z",
+			"updated": "2016-11-29T17:31:45.525Z"
+		}, {
+			"text": "Which college is this?",
+			"created": "2016-11-21T07:52:56.705Z",
+			"updated": "2016-11-29T17:31:45.525Z"
+		}, {
+			"text": "Who are we?",
+			"created": "2016-11-21T07:52:56.705Z",
+			"updated": "2016-11-29T17:31:45.525Z"
+		}, {
+			"text": "Who is JP?",
+			"created": "2016-11-21T07:52:56.705Z",
+			"updated": "2016-11-29T17:31:45.525Z"
+		}],
+		"description": null
+	}, {
+		"intent": "greeting",
+		"created": "2016-11-17T10:42:31.490Z",
+		"updated": "2016-11-17T10:42:31.490Z",
+		"examples": [{
+			"text": "Cool",
+			"created": "2016-11-17T10:42:31.490Z",
+			"updated": "2016-11-29T17:40:23.332Z"
+		}, {
+			"text": "Good Morning",
+			"created": "2016-11-17T10:42:31.490Z",
+			"updated": "2016-11-29T17:40:23.332Z"
+		}, {
+			"text": "Hello",
+			"created": "2016-11-17T10:42:31.490Z",
+			"updated": "2016-11-29T17:40:23.332Z"
+		}, {
+			"text": "Hi",
+			"created": "2016-11-17T10:42:31.490Z",
+			"updated": "2016-11-29T17:40:23.332Z"
+		}, {
+			"text": "How are you?",
+			"created": "2016-11-17T10:42:31.490Z",
+			"updated": "2016-11-29T17:40:23.332Z"
+		}],
+		"description": null
+	}, {
+		"intent": "locate_us",
+		"created": "2016-11-17T06:19:59.842Z",
+		"updated": "2016-11-17T07:18:53.300Z",
+		"examples": [{
+			"text": "How Can I be part of BlueCoders?",
+			"created": "2016-11-17T07:18:53.300Z",
+			"updated": "2016-11-29T17:31:45.525Z"
+		}, {
+			"text": "How can I learn more about Bluemix?",
+			"created": "2016-11-17T06:19:59.842Z",
+			"updated": "2016-11-29T17:31:45.525Z"
+		}, {
+			"text": "How can I reach BlueCoders?",
+			"created": "2016-11-17T06:19:59.842Z",
+			"updated": "2016-11-29T17:31:45.525Z"
+		}, {
+			"text": "Where Can I follow bluecoders?",
+			"created": "2016-11-17T06:19:59.842Z",
+			"updated": "2016-11-29T17:31:45.525Z"
+		}, {
+			"text": "Who are organisers?",
+			"created": "2016-11-17T07:18:15.663Z",
+			"updated": "2016-11-29T17:31:45.525Z"
+		}],
+		"description": null
+	}, {
+		"intent": "number",
+		"created": "2016-11-20T15:13:24.343Z",
+		"updated": "2016-11-20T15:13:24.343Z",
+		"examples": [{
+			"text": "10*10",
+			"created": "2016-11-20T15:13:24.343Z",
+			"updated": "2016-11-29T17:47:36.651Z"
+		}, {
+			"text": "How good are you in your academics?",
+			"created": "2016-11-20T15:13:24.343Z",
+			"updated": "2016-11-29T17:47:36.651Z"
+		}, {
+			"text": "What is 10 times 10?",
+			"created": "2016-11-20T15:13:24.343Z",
+			"updated": "2016-11-29T17:47:36.651Z"
+		}, {
+			"text": "What is your roll number?",
+			"created": "2016-11-20T15:13:24.343Z",
+			"updated": "2016-11-29T17:47:36.651Z"
+		}, {
+			"text": "What's your score?",
+			"created": "2016-11-20T15:13:24.343Z",
+			"updated": "2016-11-29T17:47:36.651Z"
+		}],
+		"description": null
+	}, {
+		"intent": "sarcasm",
+		"created": "2016-11-18T13:53:15.839Z",
+		"updated": "2016-11-18T13:55:59.239Z",
+		"examples": [{
+			"text": "Cool",
+			"created": "2016-11-18T13:53:15.839Z",
+			"updated": "2016-11-29T17:54:31.632Z"
+		}, {
+			"text": "It's boring here",
+			"created": "2016-11-18T13:53:15.839Z",
+			"updated": "2016-11-29T17:54:31.632Z"
+		}, {
+			"text": "knock knock",
+			"created": "2016-11-18T13:53:15.839Z",
+			"updated": "2016-11-29T17:54:31.632Z"
+		}, {
+			"text": "Let's eat pizza",
+			"created": "2016-11-18T13:55:59.239Z",
+			"updated": "2016-11-29T17:54:31.632Z"
+		}, {
+			"text": "Let's play something",
+			"created": "2016-11-18T13:53:15.839Z",
+			"updated": "2016-11-29T17:54:31.632Z"
+		}, {
+			"text": "lol",
+			"created": "2016-11-18T13:53:15.839Z",
+			"updated": "2016-11-29T17:54:31.632Z"
+		}, {
+			"text": "Who are you?",
+			"created": "2016-11-18T13:53:15.839Z",
+			"updated": "2016-11-29T17:54:31.632Z"
+		}, {
+			"text": "Why am I here?",
+			"created": "2016-11-18T13:53:15.839Z",
+			"updated": "2016-11-29T17:54:31.632Z"
+		}],
+		"description": null
+	}],
+	"updated": "2016-11-29T21:46:38.969Z",
+	"entities": [{
+		"type": null,
+		"entity": "bluecoders",
+		"source": null,
+		"values": [{
+			"value": "meetup",
+			"created": "2016-11-17T06:52:05.095Z",
+			"updated": "2016-11-17T06:52:05.095Z",
+			"metadata": null,
+			"synonyms": ["community", "developer", "event", "usergroup"]
+		}],
+		"created": "2016-11-17T06:52:05.095Z",
+		"updated": "2016-11-17T06:52:05.095Z",
+		"open_list": false,
+		"description": null
+	}, {
+		"type": null,
+		"entity": "Bluemix",
+		"source": null,
+		"values": [{
+			"value": "Bluemix",
+			"created": "2016-11-17T06:56:39.506Z",
+			"updated": "2016-11-17T06:56:39.506Z",
+			"metadata": null,
+			"synonyms": ["cloud", "IoT", "mobile", "Watson"]
+		}],
+		"created": "2016-11-17T06:56:39.506Z",
+		"updated": "2016-11-17T06:56:39.506Z",
+		"open_list": false,
+		"description": null
+	}, {
+		"type": null,
+		"entity": "sys-currency",
+		"source": "system.entities",
+		"values": [],
+		"created": "2016-11-17T06:29:37.705Z",
+		"updated": "2016-11-17T06:29:37.705Z",
+		"open_list": false,
+		"description": null
+	}, {
+		"type": null,
+		"entity": "sys-date",
+		"source": "system.entities",
+		"values": [],
+		"created": "2016-11-29T07:11:33.378Z",
+		"updated": "2016-11-29T07:11:33.378Z",
+		"open_list": false,
+		"description": null
+	}, {
+		"type": null,
+		"entity": "sys-number",
+		"source": "system.entities",
+		"values": [],
+		"created": "2016-11-17T06:29:38.203Z",
+		"updated": "2016-11-17T06:29:38.203Z",
+		"open_list": false,
+		"description": null
+	}, {
+		"type": null,
+		"entity": "sys-percentage",
+		"source": "system.entities",
+		"values": [],
+		"created": "2016-11-17T06:29:38.461Z",
+		"updated": "2016-11-17T06:29:38.461Z",
+		"open_list": false,
+		"description": null
+	}],
+	"language": "en",
+	"metadata": {
+		"runtime_version": "2016-09-20"
+	},
+	"description": "Event at Christ",
+	"dialog_nodes": [{
+		"go_to": null,
+		"output": {
+			"text": "BlueCoders is a Dev Community and Blue(mix) (An)Droid is the event."
+		},
+		"parent": null,
+		"context": null,
+		"created": "2016-11-17T06:31:51.442Z",
+		"updated": "2016-11-25T07:17:54.390Z",
+		"metadata": null,
+		"conditions": "#about_us",
+		"description": null,
+		"dialog_node": "node_1_1479364311355",
+		"previous_sibling": null
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "Hey BCoder! Go Cloud, Mobile & Cognitive with BlueCoders. \n\nFind us on Meetup.com, FB and Twitter."
+		},
+		"parent": "node_1_1479364311355",
+		"context": null,
+		"created": "2016-11-17T06:56:56.579Z",
+		"updated": "2016-11-25T07:17:37.009Z",
+		"metadata": null,
+		"conditions": "@bluecoders",
+		"description": null,
+		"dialog_node": "node_4_1479365816331",
+		"previous_sibling": null
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "Hola! Great to see you at BlueDroid Event. How Can I help?"
+		},
+		"parent": null,
+		"context": null,
+		"created": "2016-11-17T10:42:45.872Z",
+		"updated": "2016-11-20T15:02:52.404Z",
+		"metadata": null,
+		"conditions": "#greeting",
+		"description": null,
+		"dialog_node": "node_4_1479379365636",
+		"previous_sibling": "node_3_1479367164802"
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "Hola Student! Welcome to Christ University near the Forum. \nthis message is from JP - Joy Paulose, Your HoD."
+		},
+		"parent": null,
+		"context": null,
+		"created": "2016-11-21T07:53:04.887Z",
+		"updated": "2016-11-21T07:54:25.495Z",
+		"metadata": null,
+		"conditions": "#college",
+		"description": null,
+		"dialog_node": "node_1_1479714784679",
+		"previous_sibling": "node_3_1479654815546"
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "I am not good with numbers ;)"
+		},
+		"parent": "node_3_1479654815546",
+		"context": null,
+		"created": "2016-11-20T15:14:24.560Z",
+		"updated": "2016-11-20T15:16:15.188Z",
+		"metadata": null,
+		"conditions": "@sys-number",
+		"description": null,
+		"dialog_node": "node_4_1479654864319",
+		"previous_sibling": null
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "IBM Bluemix is a cloud platform that helps you solve real problems and drive business value with applications, infrastructure and services. Detailed Info@ https://Bluemix.net/"
+		},
+		"parent": null,
+		"context": null,
+		"created": "2016-11-17T07:03:26.476Z",
+		"updated": "2016-11-19T07:17:21.699Z",
+		"metadata": null,
+		"conditions": "#cloud",
+		"description": null,
+		"dialog_node": "node_1_1479366206216",
+		"previous_sibling": "node_1_1479364311355"
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "Kewl! I am WatBot. Let's Code."
+		},
+		"parent": null,
+		"context": null,
+		"created": "2016-11-18T13:53:24.140Z",
+		"updated": "2016-11-20T15:03:23.484Z",
+		"metadata": null,
+		"conditions": "#sarcasm",
+		"description": null,
+		"dialog_node": "node_1_1479477203843",
+		"previous_sibling": "node_1_1479366206216"
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "Not sure what you meant...."
+		},
+		"parent": null,
+		"context": null,
+		"created": "2016-11-17T06:32:00.839Z",
+		"updated": "2016-11-21T07:53:04.887Z",
+		"metadata": null,
+		"conditions": "anything_else",
+		"description": null,
+		"dialog_node": "node_2_1479364320842",
+		"previous_sibling": "node_1_1479714784679"
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "Sorry. My accountant is Sic today."
+		},
+		"parent": null,
+		"context": null,
+		"created": "2016-11-20T15:13:35.772Z",
+		"updated": "2016-11-21T07:53:07.659Z",
+		"metadata": null,
+		"conditions": "#number",
+		"description": null,
+		"dialog_node": "node_3_1479654815546",
+		"previous_sibling": "node_4_1479379365636"
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "The cloud platform powered by the world's most popular open source projects.\n\nGet Started at https://bluemix.net"
+		},
+		"parent": "node_1_1479366206216",
+		"context": null,
+		"created": "2016-11-17T07:12:18.083Z",
+		"updated": "2016-11-17T07:12:25.982Z",
+		"metadata": null,
+		"conditions": "@Bluemix",
+		"description": null,
+		"dialog_node": "node_2_1479366737059",
+		"previous_sibling": null
+	}, {
+		"go_to": null,
+		"output": {
+			"text": "We are Omnipresent!! You can join us on meetup.com. Follow us on Twitter and FB."
+		},
+		"parent": null,
+		"context": null,
+		"created": "2016-11-17T07:19:25.069Z",
+		"updated": "2016-11-20T15:04:14.985Z",
+		"metadata": null,
+		"conditions": "#locate_us",
+		"description": null,
+		"dialog_node": "node_3_1479367164802",
+		"previous_sibling": "node_1_1479477203843"
+	}],
+	"workspace_id": "f2a5bc02-886b-423b-bc92-5946a8c6f034",
+	"counterexamples": []
+}
