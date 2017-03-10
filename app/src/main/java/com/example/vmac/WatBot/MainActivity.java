@@ -263,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 try {
 
-                    ConversationService service = new ConversationService(ConversationService.VERSION_DATE_2016_09_20);
+                    ConversationService service = new ConversationService(ConversationService.VERSION_DATE_2016_07_11);
                     service.setUsernameAndPassword(conversation_username, conversation_password);
                     MessageRequest newMessage = new MessageRequest.Builder().inputText(inputmessage).context(context).build();
                     MessageResponse response = service.message(workspace_id, newMessage).execute();
@@ -281,9 +281,11 @@ public class MainActivity extends AppCompatActivity {
                         if(response.getOutput()!=null && response.getOutput().containsKey("text"))
                         {
 
-                            final String outputmessage = response.getOutput().get("text").toString().replace("[","").replace("]","");
-                            outMessage.setMessage(outputmessage);
-                            outMessage.setId("2");
+                            ArrayList responseList = (ArrayList) response.getOutput().get("text");
+                            if(null !=responseList && responseList.size()>0){
+                                outMessage.setMessage((String)responseList.get(0));
+                                outMessage.setId("2");
+                            }
                             messageArrayList.add(outMessage);
                         }
 
