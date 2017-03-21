@@ -403,6 +403,16 @@ public class MainActivity extends AppCompatActivity {
         @Override public void onDisconnected() {
             enableMicButton();
         }
+
+        @Override
+        public void onInactivityTimeout(RuntimeException runtimeException) {
+
+        }
+
+        @Override
+        public void onListening() {
+
+        }
     }
 
     private void showMicText(final String text) {
