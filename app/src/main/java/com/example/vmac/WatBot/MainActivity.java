@@ -263,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 try {
 
-                    ConversationService service = new ConversationService(ConversationService.VERSION_DATE_2016_07_11);
+                    ConversationService service = new ConversationService(ConversationService.VERSION_DATE_2017_02_03);
                     service.setUsernameAndPassword(conversation_username, conversation_password);
                     MessageRequest newMessage = new MessageRequest.Builder().inputText(inputmessage).context(context).build();
                     MessageResponse response = service.message(workspace_id, newMessage).execute();
