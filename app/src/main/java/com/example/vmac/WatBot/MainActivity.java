@@ -28,6 +28,7 @@ import com.ibm.watson.developer_cloud.conversation.v1.model.MessageRequest;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.SpeechToText;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.RecognizeOptions;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeakerLabel;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.websocket.RecognizeCallback;
 import com.ibm.watson.developer_cloud.text_to_speech.v1.TextToSpeech;
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
     private String TTS_username;
     private String TTS_password;
     private String analytics_APIKEY;
+    private SpeakerLabelsDiarization.RecoTokens recoTokens;
 
 
 
@@ -318,6 +320,7 @@ public class MainActivity extends AppCompatActivity {
         speechService = new SpeechToText();
         speechService.setUsernameAndPassword(STT_username, STT_password);
 
+
         if(listening != true) {
             capture = new MicrophoneInputStream(true);
             new Thread(new Runnable() {
@@ -376,15 +379,24 @@ public class MainActivity extends AppCompatActivity {
                 //.model("en-UK_NarrowbandModel")
                 .interimResults(true)
                 .inactivityTimeout(2000)
+                //TODO: Uncomment this to enable Speaker Diarization
+                //.speakerLabels(true)
                 .build();
     }
 
     //Watson Speech to Text Methods.
     private class MicrophoneRecognizeDelegate implements RecognizeCallback {
-
         @Override
         public void onTranscription(SpeechResults speechResults) {
-            System.out.println(speechResults);
+            //TODO: Uncomment this to enable Speaker Diarization
+            /*recoTokens = new SpeakerLabelsDiarization.RecoTokens();
+            if(speechResults.getSpeakerLabels() !=null)
+            {
+                recoTokens.add(speechResults);
+                Log.i("SPEECHRESULTS",speechResults.getSpeakerLabels().get(0).toString());
+
+
+            }*/
             if(speechResults.getResults() != null && !speechResults.getResults().isEmpty()) {
                 String text = speechResults.getResults().get(0).getAlternatives().get(0).getTranscript();
                 showMicText(text);
@@ -443,4 +455,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
+
+
 
