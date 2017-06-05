@@ -20,6 +20,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.ibm.mobilefirstplatform.clientsdk.android.analytics.api.Analytics;
+import com.ibm.mobilefirstplatform.clientsdk.android.core.api.BMSClient;
+import com.ibm.mobilefirstplatform.clientsdk.android.core.api.Response;
+import com.ibm.mobilefirstplatform.clientsdk.android.core.api.ResponseListener;
+import com.ibm.mobilefirstplatform.clientsdk.android.logger.api.Logger;
 import com.ibm.watson.developer_cloud.android.library.audio.MicrophoneInputStream;
 import com.ibm.watson.developer_cloud.android.library.audio.StreamPlayer;
 import com.ibm.watson.developer_cloud.android.library.audio.utils.ContentType;
@@ -33,9 +38,7 @@ import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.websocket.RecognizeCallback;
 import com.ibm.watson.developer_cloud.text_to_speech.v1.TextToSpeech;
 import com.ibm.watson.developer_cloud.text_to_speech.v1.model.Voice;
-import com.ibm.mobilefirstplatform.clientsdk.android.core.api.*;
-import com.ibm.mobilefirstplatform.clientsdk.android.analytics.api.*;
-import com.ibm.mobilefirstplatform.clientsdk.android.logger.api.*;
+
 
 import org.json.JSONObject;
 
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int RECORD_REQUEST_CODE = 101;
     private boolean listening = false;
     private SpeechToText speechService;
+    private TextToSpeech textToSpeech;
     private MicrophoneInputStream capture;
     private Logger myLogger;
     private Context mContext;
@@ -145,9 +149,11 @@ public class MainActivity extends AppCompatActivity {
         this.initialRequest = true;
         sendMessage();
 
+
         //Watson Text-to-Speech Service on Bluemix
-        final TextToSpeech service = new TextToSpeech();
-        service.setUsernameAndPassword(TTS_username, TTS_password);
+        textToSpeech = new TextToSpeech();
+        textToSpeech.setUsernameAndPassword(TTS_username, TTS_password);
+
 
         int permission = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.RECORD_AUDIO);
@@ -170,9 +176,9 @@ public class MainActivity extends AppCompatActivity {
                             streamPlayer = new StreamPlayer();
                             if(audioMessage != null && !audioMessage.getMessage().isEmpty())
                                 //Change the Voice format and choose from the available choices
-                                streamPlayer.playStream(service.synthesize(audioMessage.getMessage(), Voice.EN_LISA).execute());
+                                streamPlayer.playStream(textToSpeech.synthesize(audioMessage.getMessage(), Voice.EN_LISA).execute());
                             else
-                                streamPlayer.playStream(service.synthesize("No Text Specified", Voice.EN_LISA).execute());
+                                streamPlayer.playStream(textToSpeech.synthesize("No Text Specified", Voice.EN_LISA).execute());
 
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -423,6 +429,11 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onListening() {
+
+        }
+
+        @Override
+        public void onTranscriptionComplete() {
 
         }
     }
