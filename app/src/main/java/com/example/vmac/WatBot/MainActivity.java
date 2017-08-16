@@ -25,6 +25,7 @@ import com.ibm.mobilefirstplatform.clientsdk.android.core.api.BMSClient;
 import com.ibm.mobilefirstplatform.clientsdk.android.core.api.Response;
 import com.ibm.mobilefirstplatform.clientsdk.android.core.api.ResponseListener;
 import com.ibm.mobilefirstplatform.clientsdk.android.logger.api.Logger;
+import com.ibm.watson.developer_cloud.android.library.audio.MicrophoneHelper;
 import com.ibm.watson.developer_cloud.android.library.audio.MicrophoneInputStream;
 import com.ibm.watson.developer_cloud.android.library.audio.StreamPlayer;
 import com.ibm.watson.developer_cloud.android.library.audio.utils.ContentType;
@@ -45,6 +46,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.ibm.watson.developer_cloud.android.library.audio.MicrophoneHelper.REQUEST_PERMISSION;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -78,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
     private String TTS_password;
     private String analytics_APIKEY;
     private SpeakerLabelsDiarization.RecoTokens recoTokens;
+    private MicrophoneHelper microphoneHelper;
 
 
 
@@ -139,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
         messageArrayList = new ArrayList<>();
         mAdapter = new ChatAdapter(messageArrayList);
+        microphoneHelper = new MicrophoneHelper(this);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setStackFromEnd(true);
@@ -231,15 +236,21 @@ public class MainActivity extends AppCompatActivity {
                 }
                 return;
             }
+
+            case MicrophoneHelper.REQUEST_PERMISSION: {
+                if (grantResults.length > 0 && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this, "Permission to record audio denied", Toast.LENGTH_SHORT).show();
+                }
+            }
         }
-        if (!permissionToRecordAccepted ) finish();
+       // if (!permissionToRecordAccepted ) finish();
 
     }
 
     protected void makeRequest() {
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.RECORD_AUDIO},
-                RECORD_REQUEST_CODE);
+                MicrophoneHelper.REQUEST_PERMISSION);
     }
 
     // Sending a message to Watson Conversation Service
@@ -328,7 +339,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         if(listening != true) {
-            capture = new MicrophoneInputStream(true);
+            capture = microphoneHelper.getInputStream(true);
             new Thread(new Runnable() {
                 @Override public void run() {
                     try {
@@ -343,7 +354,7 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
             try {
-                capture.close();
+                microphoneHelper.closeInputStream();
                 listening = false;
                 Toast.makeText(MainActivity.this,"Stopped Listening....Click to Start", Toast.LENGTH_LONG).show();
             } catch (Exception e) {
