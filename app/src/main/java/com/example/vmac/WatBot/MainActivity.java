@@ -29,7 +29,9 @@ import com.ibm.watson.developer_cloud.android.library.audio.MicrophoneHelper;
 import com.ibm.watson.developer_cloud.android.library.audio.MicrophoneInputStream;
 import com.ibm.watson.developer_cloud.android.library.audio.StreamPlayer;
 import com.ibm.watson.developer_cloud.android.library.audio.utils.ContentType;
-import com.ibm.watson.developer_cloud.conversation.v1.ConversationService;
+import com.ibm.watson.developer_cloud.conversation.v1.Conversation;
+import com.ibm.watson.developer_cloud.conversation.v1.model.InputData;
+import com.ibm.watson.developer_cloud.conversation.v1.model.MessageOptions;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageRequest;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.SpeechToText;
@@ -59,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText inputMessage;
     private ImageButton btnSend;
     private ImageButton btnRecord;
-    private Map<String,Object> context = new HashMap<>();
+    //private Map<String,Object> context = new HashMap<>();
+    private com.ibm.watson.developer_cloud.conversation.v1.model.Context context = null;
     StreamPlayer streamPlayer;
     private boolean initialRequest;
     private boolean permissionToRecordAccepted = false;
@@ -70,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
     private SpeechToText speechService;
     private TextToSpeech textToSpeech;
     private MicrophoneInputStream capture;
-    private Logger myLogger;
     private Context mContext;
     private String workspace_id;
     private String conversation_username;
@@ -82,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
     private String analytics_APIKEY;
     private SpeakerLabelsDiarization.RecoTokens recoTokens;
     private MicrophoneHelper microphoneHelper;
+    private Logger myLogger;
 
 
 
@@ -282,15 +285,16 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 try {
 
-                    ConversationService service = new ConversationService(ConversationService.VERSION_DATE_2017_02_03);
+                    Conversation service = new Conversation(Conversation.VERSION_DATE_2017_05_26);
                     service.setUsernameAndPassword(conversation_username, conversation_password);
-                    MessageRequest newMessage = new MessageRequest.Builder().inputText(inputmessage).context(context).build();
-                    MessageResponse response = service.message(workspace_id, newMessage).execute();
+                    InputData input = new InputData.Builder(inputmessage).build();
+                    MessageOptions options = new MessageOptions.Builder(workspace_id).input(input).context(context).build();
+                    MessageResponse response = service.message(options).execute();
 
                     //Passing Context of last conversation
                     if(response.getContext() !=null)
                     {
-                        context.clear();
+                        //context.clear();
                         context = response.getContext();
 
                     }
@@ -391,7 +395,7 @@ public class MainActivity extends AppCompatActivity {
     //Private Methods - Speech to Text
     private RecognizeOptions getRecognizeOptions() {
         return new RecognizeOptions.Builder()
-                .continuous(true)
+                //.continuous(true)
                 .contentType(ContentType.OPUS.toString())
                 //.model("en-UK_NarrowbandModel")
                 .interimResults(true)
