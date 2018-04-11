@@ -38,7 +38,7 @@ dependencies {
     implementation 'com.ibm.watson.developer_cloud:text-to-speech:4.2.1'
     implementation 'com.ibm.watson.developer_cloud:speech-to-text:4.2.1'
     implementation 'com.ibm.watson.developer_cloud:android-sdk:0.4.3'
-    implementation 'com.ibm.mobilefirstplatform.clientsdk.android:analytics:1.1.0'
+    implementation 'com.ibm.mobilefirstplatform.clientsdk.android:analytics:1.+'
     testImplementation 'junit:junit:4.12'
     implementation 'com.google.android.gms:play-services:10.0.1'
     implementation 'com.android.support:multidex:1.0.1'

@@ -10,9 +10,9 @@
     <string name="STT_password"></string>  
 
     <!--Watson Text-To-Speech Service Credentials--> 
-    <string name="TTS_username">9a50095e-b6a7-4f05-80b0-3c5192f07e38</string>  
+    <string name="TTS_username"></string>  
     <string name="TTS_password"></string>
 
-    <!--Bluemix Mobile Analytics--> 
-    <string name="mobileanalytics_apikey">5bc78043-759d-4e52-9355-861b406bdaef</string>
+    <!--IBM Cloud Mobile Analytics--> 
+    <string name="mobileanalytics_apikey">155ca8a0-708c-4eb2-8d85-cbc9a92d09b4</string>
 </resources>

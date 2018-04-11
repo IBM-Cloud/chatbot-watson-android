@@ -20,11 +20,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.ibm.mobilefirstplatform.clientsdk.android.analytics.api.Analytics;
-import com.ibm.mobilefirstplatform.clientsdk.android.core.api.BMSClient;
-import com.ibm.mobilefirstplatform.clientsdk.android.core.api.Response;
-import com.ibm.mobilefirstplatform.clientsdk.android.core.api.ResponseListener;
-import com.ibm.mobilefirstplatform.clientsdk.android.logger.api.Logger;
+import com.ibm.mobilefirstplatform.clientsdk.android.core.api.*;
+import com.ibm.mobilefirstplatform.clientsdk.android.analytics.api.*;
+import com.ibm.mobilefirstplatform.clientsdk.android.logger.api.*;
 import com.ibm.watson.developer_cloud.android.library.audio.MicrophoneHelper;
 import com.ibm.watson.developer_cloud.android.library.audio.MicrophoneInputStream;
 import com.ibm.watson.developer_cloud.android.library.audio.StreamPlayer;
@@ -104,10 +102,10 @@ public class MainActivity extends AppCompatActivity {
         analytics_APIKEY = mContext.getString(R.string.mobileanalytics_apikey);
 
 
-        //Bluemix Mobile Analytics
-        BMSClient.getInstance().initialize(getApplicationContext(), BMSClient.REGION_US_SOUTH);
+        //IBM Cloud Mobile Analytics
+        BMSClient.getInstance().initialize(getApplicationContext(), BMSClient.REGION_SYDNEY);
         //Analytics is configured to record lifecycle events.
-        Analytics.init(getApplication(), "WatBot", analytics_APIKEY, false, Analytics.DeviceEvent.ALL);
+        Analytics.init(getApplication(), "WatBot", analytics_APIKEY, false,false, Analytics.DeviceEvent.ALL);
         //Analytics.send();
         myLogger = Logger.getLogger("myLogger");
         // Send recorded usage analytics to the Mobile Analytics Service
