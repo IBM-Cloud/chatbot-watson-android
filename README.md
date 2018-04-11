@@ -13,9 +13,9 @@ Clone the repo and import the code in Android Studio,
 ```
 git clone https://github.com/IBM-Cloud/chatbot-watson-android.git
 ```
-## Config.xml 
+## Config.xml
 
-Navigate to file app/src/main/res/values/config.xml and provide IBM Cloud service credentials 
+Navigate to file app/src/main/res/values/config.xml and provide IBM Cloud service credentials
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -47,8 +47,8 @@ Watson Assistant (formerly Conversation) combines a number of cognitive techniqu
 <h3>Getting started</h3>
 Before you can start using the Watson Assistant (formerly Conversation) service, log in to IBM Cloud and create a service instance.
 <ol>
- 	<li>Don’t have IBM Cloud account? <a title="(Opens in a new tab or window)" href="https://console.bluemix.net/catalog/services/watson-assistant-formerly-conversation?taxonomyNavigation=apps" target="_blank">Sign up</a> to create a free trial account.</li>
- 	<li>Have a IBM Cloud account? Use <a title="(Opens in a new tab or window)" href="https://console.bluemix.net/catalog/services/watson-assistant-formerly-conversation?taxonomyNavigation=apps" target="_blank">this link</a>.</li>
+ 	<li>Don’t have IBM Cloud account? <a title="(Opens in a new tab or window)" href="https://console.bluemix.net/catalog/services/watson-assistant-formerly-conversation?taxonomyNavigation=apps">Sign up</a> to create a free trial account.</li>
+ 	<li>Have a IBM Cloud account? Use <a title="(Opens in a new tab or window)" href="https://console.bluemix.net/catalog/services/watson-assistant-formerly-conversation?taxonomyNavigation=apps">this link</a>.</li>
  	<li>In the <strong>Service name</strong> field, type a unique name for your new instance of the Watson Assistant (formerly Conversation) service.
 Check the “Pricing Plans” for data limits for the Watson Assistant (formerly Conversation) service</li>
  	<li>Click <strong>Create</strong>. You’ll see details about your new instance in the “Service Details” page.</li>
@@ -191,7 +191,7 @@ Post branching Intents and entities, this is how my Watson Assistant (formerly C
 <p>Launch the Watson Assistant (formerly Conversation) service workspace and from the options select the <strong>View details</strong>.</p>
 
 <p align="center">
-<img src="https://github.com/VidyasagarMSC/WatBot/blob/initial/Images/workspace1.png" width="350"> 
+<img src="https://github.com/VidyasagarMSC/WatBot/blob/initial/Images/workspace1.png" width="350">
 <img src="https://github.com/VidyasagarMSC/WatBot/blob/initial/Images/workspace2.png" width="350">
 </p>
 
@@ -203,34 +203,34 @@ MessageResponse response = service.message("Your Workspace Id", newMessage).exec
 
 * Build and Run your app.
 
-## Enable Text to Speech 
+## Enable Text to Speech
 
-* Create a Watson Text to Speech(TTS) service on [IBM Cloud](https://console.ng.bluemix.net/catalog/services/text-to-speech/?taxonomyNavigation=apps) 
+* Create a Watson Text to Speech(TTS) service on [IBM Cloud](https://console.ng.bluemix.net/catalog/services/text-to-speech/?taxonomyNavigation=apps)
 * Navigate to Service Credentials tab and click on "View Credentials".
 * Add the credentials to config.xml
 * Build and Run your app.
 
 Now when you TAP on any message, the text will be heard via a Voice (Voice.EN_LISA). You can change the voice formats in the code (Lines 82-84 0f MainActivity.java)
 
-<strong>Note: </strong> The required gradle entries for TTS is already included in the build.gradle file 
+<strong>Note: </strong> The required gradle entries for TTS is already included in the build.gradle file
 ```
 compile 'com.ibm.watson.developer_cloud:text-to-speech:3.5.3'
 compile 'com.ibm.watson.developer_cloud:android-sdk:0.2.3'
 ```
 ## Enable Speech to Text
 
-* Create a Watson Speech-To-Text (STT) service on [IBM Cloud](https://console.ng.bluemix.net/catalog/services/speech-to-text/?taxonomyNavigation=apps) 
+* Create a Watson Speech-To-Text (STT) service on [IBM Cloud](https://console.ng.bluemix.net/catalog/services/speech-to-text/?taxonomyNavigation=apps)
 * Navigate to Service Credentials tab and click on "View Credentials".
 * Add the credentials to config.xml
 * Build and Run your app.
 
-<strong>Note: </strong> The required gradle entries for STT is already included in the build.gradle file 
+<strong>Note: </strong> The required gradle entries for STT is already included in the build.gradle file
 ```
 compile 'com.ibm.watson.developer_cloud:speech-to-text:3.5.3'
 compile 'com.ibm.watson.developer_cloud:android-sdk:0.2.3'
 compile 'com.squareup.okhttp3:okhttp-ws:3.4.2'
 ```
-## Mobile Analytics 
+## Mobile Analytics
 
 * Create a [Mobile Analytics](https://console.ng.bluemix.net/catalog/services/mobile-analytics/?taxonomyNavigation=apps) service on IBM Cloud.
 * Click on Service Credentials tab and add the apikey to config.xml.
@@ -273,9 +273,9 @@ compile 'com.ibm.mobilefirstplatform.clientsdk.android:analytics:1.+'
         });
 ```
 
-### Chat with your own WatBot 
+### Chat with your own WatBot
 
-If you have followed all the above instructions, you should be happily chatting with your Wat(son)Bot. 
+If you have followed all the above instructions, you should be happily chatting with your Wat(son)Bot.
 
 ** Remember your bot will be talking to your Watson Assistant (formerly Conversation) Service (Intents, Entities and Dialog).**
 
