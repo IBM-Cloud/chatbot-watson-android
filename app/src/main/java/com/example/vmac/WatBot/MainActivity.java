@@ -296,7 +296,7 @@ public class MainActivity extends AppCompatActivity {
                         context = response.getContext();
 
                     }
-                    Message outMessage=new Message();
+                    final Message outMessage=new Message();
                     if(response!=null)
                     {
                         if(response.getOutput()!=null && response.getOutput().containsKey("text"))
@@ -308,6 +308,25 @@ public class MainActivity extends AppCompatActivity {
                                 outMessage.setId("2");
                             }
                             messageArrayList.add(outMessage);
+                            Thread thread = new Thread(new Runnable() {
+                                public void run() {
+                                    Message audioMessage;
+                                    try {
+
+                                        audioMessage = outMessage;
+                                        streamPlayer = new StreamPlayer();
+                                        if(audioMessage != null && !audioMessage.getMessage().isEmpty())
+                                            //Change the Voice format and choose from the available choices
+                                            streamPlayer.playStream(textToSpeech.synthesize(audioMessage.getMessage(), Voice.EN_LISA).execute());
+                                        else
+                                            streamPlayer.playStream(textToSpeech.synthesize("No Text Specified", Voice.EN_LISA).execute());
+
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                            thread.start();
                         }
 
                         runOnUiThread(new Runnable() {
