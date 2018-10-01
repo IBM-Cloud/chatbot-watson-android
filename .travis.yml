@@ -2,12 +2,22 @@ language: android
 jdk: oraclejdk8
 android:
   components:
-    - tools
-    - platform-tools
-    - tools
-    - build-tools-26.0.2
-    - android-26
-    - extra-android-m2repository
+  - tools
+  - platform-tools
+  - tools
+  - build-tools-$ANDROID_BUILD_TOOLS
+  - android-$ANDROID_API
+  - android-$EMULATOR_API
+  - extra-google-google_play_services
+  - extra-google-m2repository
+  - extra-android-m2repository
+  - addon-google_apis-google-$ANDROID_API
+  - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API
+  - sys-img-armeabi-v7a-android-$EMULATOR_API
+  licenses:
+  - android-sdk-preview-license-.+
+  - android-sdk-license-.+
+  - google-gdk-license-.+
 script:
    - ./gradlew build
 
