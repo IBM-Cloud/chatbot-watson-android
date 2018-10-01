@@ -1,18 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- Watson Conversation Service Credentials --> 
-    <string name="workspace_id"></string> 
-    <string name="conversation_username"></string> 
-    <string name="conversation_password"></string>  
-
-    <!--Watson Speech-To-Text Service Credentials--> 
-    <string name="STT_username"></string> 
-    <string name="STT_password"></string>  
-
-    <!--Watson Text-To-Speech Service Credentials--> 
-    <string name="TTS_username"></string>  
-    <string name="TTS_password"></string>
-
-    <!--IBM Cloud Mobile Analytics--> 
-    <string name="mobileanalytics_apikey">155ca8a0-708c-4eb2-8d85-cbc9a92d09b4</string>
-</resources>

@@ -20,9 +20,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.ibm.mobilefirstplatform.clientsdk.android.core.api.*;
-import com.ibm.mobilefirstplatform.clientsdk.android.analytics.api.*;
-import com.ibm.mobilefirstplatform.clientsdk.android.logger.api.*;
 import com.ibm.watson.developer_cloud.android.library.audio.MicrophoneHelper;
 import com.ibm.watson.developer_cloud.android.library.audio.MicrophoneInputStream;
 import com.ibm.watson.developer_cloud.android.library.audio.StreamPlayer;
@@ -79,11 +76,8 @@ public class MainActivity extends AppCompatActivity {
     private String STT_password;
     private String TTS_username;
     private String TTS_password;
-    private String analytics_APIKEY;
     private SpeakerLabelsDiarization.RecoTokens recoTokens;
     private MicrophoneHelper microphoneHelper;
-    private Logger myLogger;
-
 
 
     @Override
@@ -99,40 +93,7 @@ public class MainActivity extends AppCompatActivity {
         STT_password = mContext.getString(R.string.STT_password);
         TTS_username = mContext.getString(R.string.TTS_username);
         TTS_password = mContext.getString(R.string.TTS_password);
-        analytics_APIKEY = mContext.getString(R.string.mobileanalytics_apikey);
 
-
-        //IBM Cloud Mobile Analytics
-        BMSClient.getInstance().initialize(getApplicationContext(), BMSClient.REGION_SYDNEY);
-        //Analytics is configured to record lifecycle events.
-        Analytics.init(getApplication(), "WatBot", analytics_APIKEY, false,false, Analytics.DeviceEvent.ALL);
-        //Analytics.send();
-        myLogger = Logger.getLogger("myLogger");
-        // Send recorded usage analytics to the Mobile Analytics Service
-        Analytics.send(new ResponseListener() {
-            @Override
-            public void onSuccess(Response response) {
-                // Handle Analytics send success here.
-            }
-
-            @Override
-            public void onFailure(Response response, Throwable throwable, JSONObject jsonObject) {
-                // Handle Analytics send failure here.
-            }
-        });
-
-        // Send logs to the Mobile Analytics Service
-        Logger.send(new ResponseListener() {
-            @Override
-            public void onSuccess(Response response) {
-                // Handle Logger send success here.
-            }
-
-            @Override
-            public void onFailure(Response response, Throwable throwable, JSONObject jsonObject) {
-                // Handle Logger send failure here.
-            }
-        });
 
         inputMessage = (EditText) findViewById(R.id.message);
         btnSend = (ImageButton) findViewById(R.id.btn_send);
@@ -263,8 +224,6 @@ public class MainActivity extends AppCompatActivity {
             inputMessage.setMessage(inputmessage);
             inputMessage.setId("1");
             messageArrayList.add(inputMessage);
-            myLogger.info("Sending a message to Watson Conversation Service");
-
         }
         else
         {

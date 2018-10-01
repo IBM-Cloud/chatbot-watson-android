@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.example.vmac.chatbot"
         minSdkVersion 21
@@ -38,7 +38,6 @@ dependencies {
     implementation 'com.ibm.watson.developer_cloud:text-to-speech:4.2.1'
     implementation 'com.ibm.watson.developer_cloud:speech-to-text:4.2.1'
     implementation 'com.ibm.watson.developer_cloud:android-sdk:0.4.3'
-    implementation 'com.ibm.mobilefirstplatform.clientsdk.android:analytics:1.+'
     testImplementation 'junit:junit:4.12'
     implementation 'com.google.android.gms:play-services:10.0.1'
     implementation 'com.android.support:multidex:1.0.1'
