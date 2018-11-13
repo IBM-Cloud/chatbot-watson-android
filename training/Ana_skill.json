@@ -1050,7 +1050,7 @@
       "minor_version": "2018-07-10"
     }
   },
-  "description": "Workspace to be used for testing and training.",
+  "description": "Skill to be used for testing and training.",
   "dialog_nodes": [
     {
       "type": "standard",
