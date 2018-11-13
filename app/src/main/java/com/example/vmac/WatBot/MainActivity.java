@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
   private boolean listening = false;
   private MicrophoneInputStream capture;
   private Context mContext;
-  private SpeakerLabelsDiarization.RecoTokens recoTokens;
   private MicrophoneHelper microphoneHelper;
 
   private Assistant watsonAssistant;
@@ -72,13 +71,28 @@ public class MainActivity extends AppCompatActivity {
   private SpeechToText speechService;
   private TextToSpeech textToSpeech;
 
+  private void createServices() {
+    watsonAssistant = new Assistant("2018-11-08", new IamOptions.Builder()
+      .apiKey(mContext.getString(R.string.assistant_apikey))
+      .build());
+
+    textToSpeech = new TextToSpeech();
+    textToSpeech.setIamCredentials(new IamOptions.Builder()
+      .apiKey(mContext.getString(R.string.TTS_apikey))
+      .build());
+
+    speechService = new SpeechToText();
+    speechService.setIamCredentials(new IamOptions.Builder()
+      .apiKey(mContext.getString(R.string.STT_apikey))
+      .build());
+  }
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
     mContext = getApplicationContext();
-
 
     inputMessage = (EditText) findViewById(R.id.message);
     btnSend = (ImageButton) findViewById(R.id.btn_send);
@@ -100,21 +114,6 @@ public class MainActivity extends AppCompatActivity {
     this.inputMessage.setText("");
     this.initialRequest = true;
 
-    watsonAssistant = new Assistant("2018-11-08", new IamOptions.Builder()
-      .apiKey(mContext.getString(R.string.assistant_apikey))
-      .build());
-
-    textToSpeech = new TextToSpeech();
-    textToSpeech.setIamCredentials(new IamOptions.Builder()
-      .apiKey(mContext.getString(R.string.TTS_apikey))
-      .build());
-
-    speechService = new SpeechToText();
-    speechService.setIamCredentials(new IamOptions.Builder()
-      .apiKey(mContext.getString(R.string.STT_apikey))
-      .build());
-
-    sendMessage();
 
     int permission = ContextCompat.checkSelfPermission(this,
       Manifest.permission.RECORD_AUDIO);
@@ -158,6 +157,9 @@ public class MainActivity extends AppCompatActivity {
         recordMessage();
       }
     });
+
+    createServices();
+    sendMessage();
   }
 
   ;
@@ -346,8 +348,6 @@ public class MainActivity extends AppCompatActivity {
       .model("en-US_BroadbandModel")
       .interimResults(true)
       .inactivityTimeout(2000)
-      //TODO: Uncomment this to enable Speaker Diarization
-      //.speakerLabels(true)
       .build();
   }
 
@@ -355,15 +355,6 @@ public class MainActivity extends AppCompatActivity {
   private class MicrophoneRecognizeDelegate implements RecognizeCallback {
     @Override
     public void onTranscription(SpeechRecognitionResults speechResults) {
-      //TODO: Uncomment this to enable Speaker Diarization
-            /*recoTokens = new SpeakerLabelsDiarization.RecoTokens();
-            if(speechResults.getSpeakerLabels() !=null)
-            {
-                recoTokens.add(speechResults);
-                Log.i("SPEECHRESULTS",speechResults.getSpeakerLabels().get(0).toString());
-
-
-            }*/
       if (speechResults.getResults() != null && !speechResults.getResults().isEmpty()) {
         String text = speechResults.getResults().get(0).getAlternatives().get(0).getTranscript();
         showMicText(text);
