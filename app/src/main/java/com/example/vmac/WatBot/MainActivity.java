@@ -24,27 +24,24 @@ import com.ibm.watson.developer_cloud.android.library.audio.MicrophoneHelper;
 import com.ibm.watson.developer_cloud.android.library.audio.MicrophoneInputStream;
 import com.ibm.watson.developer_cloud.android.library.audio.StreamPlayer;
 import com.ibm.watson.developer_cloud.android.library.audio.utils.ContentType;
-import com.ibm.watson.developer_cloud.conversation.v1.Conversation;
-import com.ibm.watson.developer_cloud.conversation.v1.model.InputData;
-import com.ibm.watson.developer_cloud.conversation.v1.model.MessageOptions;
-import com.ibm.watson.developer_cloud.conversation.v1.model.MessageRequest;
-import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
+import com.ibm.watson.developer_cloud.assistant.v2.Assistant;
+import com.ibm.watson.developer_cloud.assistant.v2.model.CreateSessionOptions;
+import com.ibm.watson.developer_cloud.assistant.v2.model.MessageContext;
+import com.ibm.watson.developer_cloud.assistant.v2.model.MessageInput;
+import com.ibm.watson.developer_cloud.assistant.v2.model.MessageOptions;
+import com.ibm.watson.developer_cloud.assistant.v2.model.MessageResponse;
+import com.ibm.watson.developer_cloud.assistant.v2.model.SessionResponse;
+import com.ibm.watson.developer_cloud.http.ServiceCall;
+import com.ibm.watson.developer_cloud.service.security.IamOptions;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.SpeechToText;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.RecognizeOptions;
-import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeakerLabel;
-import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechRecognitionResults;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.websocket.RecognizeCallback;
 import com.ibm.watson.developer_cloud.text_to_speech.v1.TextToSpeech;
-import com.ibm.watson.developer_cloud.text_to_speech.v1.model.Voice;
+import com.ibm.watson.developer_cloud.text_to_speech.v1.model.SynthesizeOptions;
 
-
-import org.json.JSONObject;
-
+import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-import static com.ibm.watson.developer_cloud.android.library.audio.MicrophoneHelper.REQUEST_PERMISSION;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -56,29 +53,23 @@ public class MainActivity extends AppCompatActivity {
     private EditText inputMessage;
     private ImageButton btnSend;
     private ImageButton btnRecord;
-    //private Map<String,Object> context = new HashMap<>();
-    private com.ibm.watson.developer_cloud.conversation.v1.model.Context context = null;
-    StreamPlayer streamPlayer;
+    private MessageContext context = null;
+    StreamPlayer streamPlayer = new StreamPlayer();
     private boolean initialRequest;
     private boolean permissionToRecordAccepted = false;
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private static String TAG = "MainActivity";
     private static final int RECORD_REQUEST_CODE = 101;
     private boolean listening = false;
-    private SpeechToText speechService;
-    private TextToSpeech textToSpeech;
     private MicrophoneInputStream capture;
     private Context mContext;
-    private String workspace_id;
-    private String conversation_username;
-    private String conversation_password;
-    private String STT_username;
-    private String STT_password;
-    private String TTS_username;
-    private String TTS_password;
     private SpeakerLabelsDiarization.RecoTokens recoTokens;
     private MicrophoneHelper microphoneHelper;
 
+    private Assistant watsonAssistant;
+    private SessionResponse watsonAssistantSession;
+    private SpeechToText speechService;
+    private TextToSpeech textToSpeech;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,13 +77,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mContext = getApplicationContext();
-        conversation_username = mContext.getString(R.string.conversation_username);
-        conversation_password = mContext.getString(R.string.conversation_password);
-        workspace_id = mContext.getString(R.string.workspace_id);
-        STT_username = mContext.getString(R.string.STT_username);
-        STT_password = mContext.getString(R.string.STT_password);
-        TTS_username = mContext.getString(R.string.TTS_username);
-        TTS_password = mContext.getString(R.string.TTS_password);
 
 
         inputMessage = (EditText) findViewById(R.id.message);
@@ -114,13 +98,23 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
         this.inputMessage.setText("");
         this.initialRequest = true;
-        sendMessage();
 
+        watsonAssistant = new Assistant("2018-11-08", new IamOptions.Builder()
+          .apiKey(mContext.getString(R.string.assistant_apikey))
+          .build());
 
         //Watson Text-to-Speech Service on Bluemix
         textToSpeech = new TextToSpeech();
-        textToSpeech.setUsernameAndPassword(TTS_username, TTS_password);
+        textToSpeech.setIamCredentials(new IamOptions.Builder()
+          .apiKey(mContext.getString(R.string.TTS_apikey))
+          .build());
 
+        speechService = new SpeechToText();
+        speechService.setIamCredentials(new IamOptions.Builder()
+          .apiKey(mContext.getString(R.string.STT_apikey))
+          .build());
+
+        sendMessage();
 
         int permission = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.RECORD_AUDIO);
@@ -140,13 +134,19 @@ public class MainActivity extends AppCompatActivity {
                         try {
 
                             audioMessage =(Message) messageArrayList.get(position);
-                            streamPlayer = new StreamPlayer();
                             if(audioMessage != null && !audioMessage.getMessage().isEmpty())
                                 //Change the Voice format and choose from the available choices
-                                streamPlayer.playStream(textToSpeech.synthesize(audioMessage.getMessage(), Voice.EN_LISA).execute());
+                                streamPlayer.playStream(textToSpeech.synthesize(new SynthesizeOptions.Builder()
+                                  .text(audioMessage.getMessage())
+                                  .voice(SynthesizeOptions.Voice.EN_US_LISAVOICE)
+                                  .accept(SynthesizeOptions.Accept.AUDIO_WAV)
+                                  .build()).execute());
                             else
-                                streamPlayer.playStream(textToSpeech.synthesize("No Text Specified", Voice.EN_LISA).execute());
-
+                                streamPlayer.playStream(textToSpeech.synthesize(new SynthesizeOptions.Builder()
+                                  .text("No Text Specified")
+                                  .voice(SynthesizeOptions.Voice.EN_US_LISAVOICE)
+                                  .accept(SynthesizeOptions.Accept.AUDIO_WAV)
+                                  .build()).execute());
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -241,52 +241,56 @@ public class MainActivity extends AppCompatActivity {
         Thread thread = new Thread(new Runnable(){
             public void run() {
                 try {
-
-                    Conversation service = new Conversation(Conversation.VERSION_DATE_2017_05_26);
-                    service.setUsernameAndPassword(conversation_username, conversation_password);
-                    InputData input = new InputData.Builder(inputmessage).build();
-                    MessageOptions options = new MessageOptions.Builder(workspace_id).input(input).context(context).build();
-                    MessageResponse response = service.message(options).execute();
-
-                    //Passing Context of last conversation
-                    if(response.getContext() !=null)
-                    {
-                        //context.clear();
-                        context = response.getContext();
-
+                    if (watsonAssistantSession == null) {
+                        ServiceCall<SessionResponse> call = watsonAssistant.createSession(new CreateSessionOptions.Builder().assistantId(mContext.getString(R.string.assistant_id)).build());
+                        watsonAssistantSession = call.execute();
                     }
+
+                    MessageInput input = new MessageInput.Builder()
+                      .text(inputmessage)
+                      .build();
+                    MessageOptions options = new MessageOptions.Builder()
+                      .assistantId(mContext.getString(R.string.assistant_id))
+                      .input(input)
+                      .sessionId(watsonAssistantSession.getSessionId())
+                      .build();
+                    MessageResponse response = watsonAssistant.message(options).execute();
+
                     final Message outMessage=new Message();
-                    if(response!=null)
+                    if(response!=null &&
+                      response.getOutput() != null &&
+                      !response.getOutput().getGeneric().isEmpty() &&
+                      "text".equals(response.getOutput().getGeneric().get(0).getResponseType()))
                     {
-                        if(response.getOutput()!=null && response.getOutput().containsKey("text"))
-                        {
+                        outMessage.setMessage(response.getOutput().getGeneric().get(0).getText());
+                        outMessage.setId("2");
 
-                            ArrayList responseList = (ArrayList) response.getOutput().get("text");
-                            if(null !=responseList && responseList.size()>0){
-                                outMessage.setMessage((String)responseList.get(0));
-                                outMessage.setId("2");
-                            }
-                            messageArrayList.add(outMessage);
-                            Thread thread = new Thread(new Runnable() {
-                                public void run() {
-                                    Message audioMessage;
-                                    try {
+                        messageArrayList.add(outMessage);
+                        Thread thread = new Thread(new Runnable() {
+                            public void run() {
+                                Message audioMessage;
+                                try {
 
-                                        audioMessage = outMessage;
-                                        streamPlayer = new StreamPlayer();
-                                        if(audioMessage != null && !audioMessage.getMessage().isEmpty())
-                                            //Change the Voice format and choose from the available choices
-                                            streamPlayer.playStream(textToSpeech.synthesize(audioMessage.getMessage(), Voice.EN_LISA).execute());
-                                        else
-                                            streamPlayer.playStream(textToSpeech.synthesize("No Text Specified", Voice.EN_LISA).execute());
-
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
+                                    audioMessage = outMessage;
+                                    if(audioMessage != null && !audioMessage.getMessage().isEmpty())
+                                        //Change the Voice format and choose from the available choices
+                                        streamPlayer.playStream(textToSpeech.synthesize(new SynthesizeOptions.Builder()
+                                          .text(audioMessage.getMessage())
+                                          .voice(SynthesizeOptions.Voice.EN_US_LISAVOICE)
+                                          .accept(SynthesizeOptions.Accept.AUDIO_WAV)
+                                          .build()).execute());
+                                    else
+                                        streamPlayer.playStream(textToSpeech.synthesize(new SynthesizeOptions.Builder()
+                                          .text("No Text Specified")
+                                          .voice(SynthesizeOptions.Voice.EN_US_LISAVOICE)
+                                          .accept(SynthesizeOptions.Accept.AUDIO_WAV)
+                                          .build()).execute());
+                                } catch (Exception e) {
+                                    e.printStackTrace();
                                 }
-                            });
-                            thread.start();
-                        }
+                            }
+                        });
+                        thread.start();
 
                         runOnUiThread(new Runnable() {
                             public void run() {
@@ -298,8 +302,6 @@ public class MainActivity extends AppCompatActivity {
 
                             }
                         });
-
-
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -314,16 +316,12 @@ public class MainActivity extends AppCompatActivity {
     //Record a message via Watson Speech to Text
     private void recordMessage() {
         //mic.setEnabled(false);
-        speechService = new SpeechToText();
-        speechService.setUsernameAndPassword(STT_username, STT_password);
-
-
         if(listening != true) {
             capture = microphoneHelper.getInputStream(true);
             new Thread(new Runnable() {
                 @Override public void run() {
                     try {
-                        speechService.recognizeUsingWebSocket(capture, getRecognizeOptions(), new MicrophoneRecognizeDelegate());
+                        speechService.recognizeUsingWebSocket(getRecognizeOptions(capture), new MicrophoneRecognizeDelegate());
                     } catch (Exception e) {
                         showError(e);
                     }
@@ -369,11 +367,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Private Methods - Speech to Text
-    private RecognizeOptions getRecognizeOptions() {
+    private RecognizeOptions getRecognizeOptions(InputStream audio) {
         return new RecognizeOptions.Builder()
-                //.continuous(true)
+                .audio(audio)
                 .contentType(ContentType.OPUS.toString())
-                //.model("en-UK_NarrowbandModel")
+          .model("en-US_BroadbandModel")
                 .interimResults(true)
                 .inactivityTimeout(2000)
                 //TODO: Uncomment this to enable Speaker Diarization
@@ -384,7 +382,7 @@ public class MainActivity extends AppCompatActivity {
     //Watson Speech to Text Methods.
     private class MicrophoneRecognizeDelegate implements RecognizeCallback {
         @Override
-        public void onTranscription(SpeechResults speechResults) {
+        public void onTranscription(SpeechRecognitionResults speechResults) {
             //TODO: Uncomment this to enable Speaker Diarization
             /*recoTokens = new SpeakerLabelsDiarization.RecoTokens();
             if(speechResults.getSpeakerLabels() !=null)
