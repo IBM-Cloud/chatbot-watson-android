@@ -1,12 +1,13 @@
 package com.example.vmac.WatBot;
 
-import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeakerLabel;
-import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechAlternative;
-import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeakerLabelsResult;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechRecognitionAlternative;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechRecognitionResult;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechRecognitionResults;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechTimestamp;
-import com.ibm.watson.developer_cloud.speech_to_text.v1.model.Transcript;
 import com.ibm.watson.developer_cloud.util.GsonSingleton;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -20,9 +21,9 @@ import java.util.concurrent.CountDownLatch;
 
 public class SpeakerLabelsDiarization {
     public static class RecoToken {
-        private Double startTime;
-        private Double endTime;
-        private Integer speaker;
+        private BigDecimal startTime;
+        private BigDecimal endTime;
+        private Long speaker;
         private String word;
         private Boolean spLabelIsFinal;
 
@@ -32,8 +33,8 @@ public class SpeakerLabelsDiarization {
          * @param speechTimestamp the speech timestamp
          */
         RecoToken(SpeechTimestamp speechTimestamp) {
-            startTime = speechTimestamp.getStartTime();
-            endTime = speechTimestamp.getEndTime();
+            startTime = new BigDecimal(speechTimestamp.getStartTime());
+            endTime = new BigDecimal(speechTimestamp.getEndTime());
             word = speechTimestamp.getWord();
         }
 
@@ -42,9 +43,9 @@ public class SpeakerLabelsDiarization {
          *
          * @param speakerLabel the speaker label
          */
-        RecoToken(SpeakerLabel speakerLabel) {
-            startTime = speakerLabel.getFrom();
-            endTime = speakerLabel.getTo();
+        RecoToken(SpeakerLabelsResult speakerLabel) {
+            startTime = new BigDecimal(speakerLabel.getFrom());
+            endTime = new BigDecimal(speakerLabel.getTo());
             speaker = speakerLabel.getSpeaker();
         }
 
@@ -62,7 +63,7 @@ public class SpeakerLabelsDiarization {
          *
          * @param speakerLabel the speaker label
          */
-        void updateFrom(SpeakerLabel speakerLabel) {
+        void updateFrom(SpeakerLabelsResult speakerLabel) {
             speaker = speakerLabel.getSpeaker();
         }
     }
@@ -71,7 +72,7 @@ public class SpeakerLabelsDiarization {
      * The Class Utterance.
      */
     public static class Utterance {
-        private Integer speaker;
+        private Long speaker;
         private String transcript = "";
 
         /**
@@ -80,7 +81,7 @@ public class SpeakerLabelsDiarization {
          * @param speaker the speaker
          * @param transcript the transcript
          */
-        public Utterance(final Integer speaker, final String transcript) {
+        public Utterance(final Long speaker, final String transcript) {
             this.speaker = speaker;
             this.transcript = transcript;
         }
@@ -91,13 +92,13 @@ public class SpeakerLabelsDiarization {
      */
     public static class RecoTokens {
 
-        private Map<Double, RecoToken> recoTokenMap;
+        private Map<BigDecimal, RecoToken> recoTokenMap;
 
         /**
          * Instantiates a new reco tokens.
          */
         public RecoTokens() {
-            recoTokenMap = new LinkedHashMap<Double, RecoToken>();
+            recoTokenMap = new LinkedHashMap<BigDecimal, RecoToken>();
         }
 
         /**
@@ -105,12 +106,12 @@ public class SpeakerLabelsDiarization {
          *
          * @param speechResults the speech results
          */
-        public void add(SpeechResults speechResults) {
+        public void add(SpeechRecognitionResults speechResults) {
             if (speechResults.getResults() != null)
                 for (int i = 0; i < speechResults.getResults().size(); i++) {
-                    Transcript transcript = speechResults.getResults().get(i);
-                    if (transcript.isFinal()) {
-                        SpeechAlternative speechAlternative = transcript.getAlternatives().get(0);
+                    SpeechRecognitionResult transcript = speechResults.getResults().get(i);
+                    if (transcript.isFinalResults()) {
+                        SpeechRecognitionAlternative speechAlternative = transcript.getAlternatives().get(0);
 
                         for (int ts = 0; ts < speechAlternative.getTimestamps().size(); ts++) {
                             SpeechTimestamp speechTimestamp = speechAlternative.getTimestamps().get(ts);
@@ -134,7 +135,7 @@ public class SpeakerLabelsDiarization {
             RecoToken recoToken = recoTokenMap.get(speechTimestamp.getStartTime());
             if (recoToken == null) {
                 recoToken = new RecoToken(speechTimestamp);
-                recoTokenMap.put(speechTimestamp.getStartTime(), recoToken);
+                recoTokenMap.put(new BigDecimal(speechTimestamp.getStartTime()), recoToken);
             } else {
                 recoToken.updateFrom(speechTimestamp);
             }
@@ -145,27 +146,27 @@ public class SpeakerLabelsDiarization {
          *
          * @param speakerLabel the speaker label
          */
-        public void add(SpeakerLabel speakerLabel) {
+        public void add(SpeakerLabelsResult speakerLabel) {
             RecoToken recoToken = recoTokenMap.get(speakerLabel.getFrom());
             if (recoToken == null) {
                 recoToken = new RecoToken(speakerLabel);
-                recoTokenMap.put(speakerLabel.getFrom(), recoToken);
+                recoTokenMap.put(new BigDecimal(speakerLabel.getFrom()), recoToken);
             } else {
                 recoToken.updateFrom(speakerLabel);
             }
 
-            if (speakerLabel.isFinal()) {
-                markTokensBeforeAsFinal(speakerLabel.getFrom());
+            if (speakerLabel.isFinalResults()) {
+                markTokensBeforeAsFinal(new BigDecimal(speakerLabel.getFrom()));
                 report();
                 cleanFinal();
             }
         }
 
-        private void markTokensBeforeAsFinal(Double from) {
+        private void markTokensBeforeAsFinal(BigDecimal from) {
             Map<Double, RecoToken> recoTokenMap = new LinkedHashMap<>();
 
             for (RecoToken rt : recoTokenMap.values()) {
-                if (rt.startTime <= from)
+                if (rt.startTime.compareTo(from) <= 0)
                     rt.spLabelIsFinal = true;
             }
         }
@@ -175,7 +176,7 @@ public class SpeakerLabelsDiarization {
          */
         public void report() {
             List<Utterance> uttterances = new ArrayList<Utterance>();
-            Utterance currentUtterance = new Utterance(0, "");
+            Utterance currentUtterance = new Utterance(0L, "");
 
             for (RecoToken rt : recoTokenMap.values()) {
                 if (currentUtterance.speaker != rt.speaker) {
@@ -191,8 +192,8 @@ public class SpeakerLabelsDiarization {
         }
 
         private void cleanFinal() {
-            Set<Map.Entry<Double, RecoToken>> set = recoTokenMap.entrySet();
-            for (Map.Entry<Double, RecoToken> e : set) {
+            Set<Map.Entry<BigDecimal, RecoToken>> set = recoTokenMap.entrySet();
+            for (Map.Entry<BigDecimal, RecoToken> e : set) {
                 if (e.getValue().spLabelIsFinal) {
                     recoTokenMap.remove(e.getKey());
                 }
