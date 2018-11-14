@@ -7,34 +7,34 @@ package com.example.vmac.WatBot;
 import java.io.Serializable;
 
 public class Message implements Serializable {
-    String id, message;
+  String id, message;
 
 
-    public Message() {
-    }
+  public Message() {
+  }
 
-    public Message(String id, String message, String createdAt) {
-        this.id = id;
-        this.message = message;
+  public Message(String id, String message, String createdAt) {
+    this.id = id;
+    this.message = message;
 
 
-    }
+  }
 
-    public String getId() {
-        return id;
-    }
+  public String getId() {
+    return id;
+  }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+  public void setId(String id) {
+    this.id = id;
+  }
 
-    public String getMessage() {
-        return message;
-    }
+  public String getMessage() {
+    return message;
+  }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
+  public void setMessage(String message) {
+    this.message = message;
+  }
 
 
 }
