@@ -37,7 +37,7 @@ import com.ibm.watson.developer_cloud.service.security.IamOptions;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.SpeechToText;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.RecognizeOptions;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechRecognitionResults;
-import com.ibm.watson.developer_cloud.speech_to_text.v1.websocket.RecognizeCallback;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.websocket.BaseRecognizeCallback;
 import com.ibm.watson.developer_cloud.text_to_speech.v1.TextToSpeech;
 import com.ibm.watson.developer_cloud.text_to_speech.v1.model.SynthesizeOptions;
 
@@ -352,18 +352,13 @@ public class MainActivity extends AppCompatActivity {
   }
 
   //Watson Speech to Text Methods.
-  private class MicrophoneRecognizeDelegate implements RecognizeCallback {
+  private class MicrophoneRecognizeDelegate extends BaseRecognizeCallback {
     @Override
     public void onTranscription(SpeechRecognitionResults speechResults) {
       if (speechResults.getResults() != null && !speechResults.getResults().isEmpty()) {
         String text = speechResults.getResults().get(0).getAlternatives().get(0).getTranscript();
         showMicText(text);
       }
-    }
-
-    @Override
-    public void onConnected() {
-
     }
 
     @Override
@@ -377,20 +372,6 @@ public class MainActivity extends AppCompatActivity {
       enableMicButton();
     }
 
-    @Override
-    public void onInactivityTimeout(RuntimeException runtimeException) {
-
-    }
-
-    @Override
-    public void onListening() {
-
-    }
-
-    @Override
-    public void onTranscriptionComplete() {
-
-    }
   }
 
   private void showMicText(final String text) {
