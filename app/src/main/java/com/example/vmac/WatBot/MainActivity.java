@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
   private EditText inputMessage;
   private ImageButton btnSend;
   private ImageButton btnRecord;
-  private MessageContext context = null;
   StreamPlayer streamPlayer = new StreamPlayer();
   private boolean initialRequest;
   private boolean permissionToRecordAccepted = false;
@@ -94,13 +93,13 @@ public class MainActivity extends AppCompatActivity {
 
     mContext = getApplicationContext();
 
-    inputMessage = (EditText) findViewById(R.id.message);
-    btnSend = (ImageButton) findViewById(R.id.btn_send);
-    btnRecord = (ImageButton) findViewById(R.id.btn_record);
+    inputMessage = findViewById(R.id.message);
+    btnSend = findViewById(R.id.btn_send);
+    btnRecord = findViewById(R.id.btn_record);
     String customFont = "Montserrat-Regular.ttf";
     Typeface typeface = Typeface.createFromAsset(getAssets(), customFont);
     inputMessage.setTypeface(typeface);
-    recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+    recyclerView = findViewById(R.id.recycler_view);
 
     messageArrayList = new ArrayList<>();
     mAdapter = new ChatAdapter(messageArrayList);
@@ -201,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
       MicrophoneHelper.REQUEST_PERMISSION);
   }
 
-  // Sending a message to Watson Conversation Service
+  // Sending a message to Watson Assistant Service
   private void sendMessage() {
 
     final String inputmessage = this.inputMessage.getText().toString().trim();
@@ -288,7 +287,6 @@ public class MainActivity extends AppCompatActivity {
 
   //Record a message via Watson Speech to Text
   private void recordMessage() {
-    //mic.setEnabled(false);
     if (listening != true) {
       capture = microphoneHelper.getInputStream(true);
       new Thread(new Runnable() {
