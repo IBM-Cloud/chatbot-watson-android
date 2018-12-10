@@ -27,7 +27,6 @@ import com.ibm.watson.developer_cloud.android.library.audio.StreamPlayer;
 import com.ibm.watson.developer_cloud.android.library.audio.utils.ContentType;
 import com.ibm.watson.developer_cloud.assistant.v2.Assistant;
 import com.ibm.watson.developer_cloud.assistant.v2.model.CreateSessionOptions;
-import com.ibm.watson.developer_cloud.assistant.v2.model.MessageContext;
 import com.ibm.watson.developer_cloud.assistant.v2.model.MessageInput;
 import com.ibm.watson.developer_cloud.assistant.v2.model.MessageOptions;
 import com.ibm.watson.developer_cloud.assistant.v2.model.MessageResponse;
@@ -72,18 +71,21 @@ public class MainActivity extends AppCompatActivity {
 
   private void createServices() {
     watsonAssistant = new Assistant("2018-11-08", new IamOptions.Builder()
-      .apiKey(mContext.getString(R.string.assistant_apikey))
-      .build());
+            .apiKey(mContext.getString(R.string.assistant_apikey))
+            .build());
+    watsonAssistant.setEndPoint(mContext.getString(R.string.assistant_url));
 
     textToSpeech = new TextToSpeech();
     textToSpeech.setIamCredentials(new IamOptions.Builder()
-      .apiKey(mContext.getString(R.string.TTS_apikey))
-      .build());
+            .apiKey(mContext.getString(R.string.TTS_apikey))
+            .build());
+    textToSpeech.setEndPoint(mContext.getString(R.string.TTS_url));
 
     speechService = new SpeechToText();
     speechService.setIamCredentials(new IamOptions.Builder()
-      .apiKey(mContext.getString(R.string.STT_apikey))
-      .build());
+            .apiKey(mContext.getString(R.string.STT_apikey))
+            .build());
+    speechService.setEndPoint(mContext.getString(R.string.STT_url));
   }
 
   @Override
@@ -238,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
             .sessionId(watsonAssistantSession.getSessionId())
             .build();
           MessageResponse response = watsonAssistant.message(options).execute();
-
+            Log.i(TAG, "run: "+response);
           final Message outMessage = new Message();
           if (response != null &&
             response.getOutput() != null &&
