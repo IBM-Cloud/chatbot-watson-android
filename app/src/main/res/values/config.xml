@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- ID of the assistant to use -->
-    <string name="assistant_id"></string>
+    <!--Watson Assistant service credentials-->
+    <!-- REPLACE `ASSISTANT_ID_HERE` with ID of the Assistant to use -->
+    <string name="assistant_id">ASSISTANT_ID_HERE</string>
 
-    <!-- apikey from Watson Assistant service credentials -->
-    <string name="assistant_apikey"></string>
+    <!-- REPLACE `ASSISTANT_API_KEY_HERE` with Watson Assistant service API Key-->
+    <string name="assistant_apikey">ASSISTANT_API_KEY_HERE</string>
 
-    <!-- apikey from Watson Speech-To-Text service credentials -->
-    <string name="STT_apikey"></string>
+    <!-- REPLACE `ASSISTANT_URL_HERE` with Watson Assistant service URL-->
+    <string name="assistant_url">ASSISTANT_URL_HERE</string>
 
-    <!-- apikey from Watson Text-To-Speech service credentials-->
-    <string name="TTS_apikey"></string>
+
+    <!--Watson Speech To Text(STT) service credentials-->
+    <!-- REPLACE `STT_API_KEY_HERE` with Watson Speech to Text service API Key-->
+    <string name="STT_apikey">STT_API_KEY_HERE</string>
+
+    <!-- REPLACE `STT_URL_HERE` with Watson Speech to Text service URL-->
+    <string name="STT_url">STT_URL_HERE</string>
+
+
+    <!--Watson Text To Speech(TTS) service credentials-->
+    <!-- REPLACE `TTS_API_KEY_HERE` with Watson Text to Speech service API Key-->
+    <string name="TTS_apikey">TTS_API_KEY_HERE</string>
+
+    <!-- REPLACE `TTS_URL_HERE` with Watson Text to Speech service URL-->
+    <string name="TTS_url">TTS_URL_HERE</string>
 
 </resources>
