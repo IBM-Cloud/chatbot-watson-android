@@ -27,6 +27,7 @@ import com.ibm.watson.developer_cloud.android.library.audio.StreamPlayer;
 import com.ibm.watson.developer_cloud.android.library.audio.utils.ContentType;
 import com.ibm.watson.developer_cloud.assistant.v2.Assistant;
 import com.ibm.watson.developer_cloud.assistant.v2.model.CreateSessionOptions;
+import com.ibm.watson.developer_cloud.assistant.v2.model.DialogRuntimeResponseGeneric;
 import com.ibm.watson.developer_cloud.assistant.v2.model.MessageInput;
 import com.ibm.watson.developer_cloud.assistant.v2.model.MessageOptions;
 import com.ibm.watson.developer_cloud.assistant.v2.model.MessageResponse;
@@ -42,6 +43,7 @@ import com.ibm.watson.developer_cloud.text_to_speech.v1.model.SynthesizeOptions;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -105,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
         messageArrayList = new ArrayList<>();
         mAdapter = new ChatAdapter(messageArrayList);
+        mAdapter.activity = this;
         microphoneHelper = new MicrophoneHelper(this);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -241,18 +244,36 @@ public class MainActivity extends AppCompatActivity {
                             .build();
                     MessageResponse response = watsonAssistant.message(options).execute();
                     Log.i(TAG, "run: " + response);
-                    final Message outMessage = new Message();
                     if (response != null &&
                             response.getOutput() != null &&
-                            !response.getOutput().getGeneric().isEmpty() &&
-                            "text".equals(response.getOutput().getGeneric().get(0).getResponseType())) {
-                        outMessage.setMessage(response.getOutput().getGeneric().get(0).getText());
-                        outMessage.setId("2");
+                            !response.getOutput().getGeneric().isEmpty()) {
 
-                        messageArrayList.add(outMessage);
+                        List<DialogRuntimeResponseGeneric> responses = response.getOutput().getGeneric();
 
-                        // speak the message
-                        new SayTask().execute(outMessage.getMessage());
+                        for (DialogRuntimeResponseGeneric r : responses) {
+                            Message outMessage;
+                            switch (r.getResponseType()) {
+                                case "text":
+                                    outMessage = new Message();
+                                    outMessage.setMessage(r.getText());
+                                    outMessage.setId("2");
+
+                                    messageArrayList.add(outMessage);
+
+                                    // speak the message
+                                    new SayTask().execute(outMessage.getMessage());
+                                    break;
+                                case "image":
+                                    outMessage = new Message(r);
+                                    messageArrayList.add(outMessage);
+
+                                    // speak the description
+                                    new SayTask().execute("You received an image: " + outMessage.getTitle() + outMessage.getDescription());
+                                    break;
+                                default:
+                                    Log.e("Error", "Unhandled message type");
+                            }
+                        }
 
                         runOnUiThread(new Runnable() {
                             public void run() {
