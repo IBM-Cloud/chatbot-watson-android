@@ -6,7 +6,7 @@ Learn how easy it is to build an IBM Watson powered ChatBot running on Android a
 
 <p align="center"><img src="images/architecture.png"/></p>
 
-For **step-by-step instructions**, refer this tutorial - [Build a voice-enabled Android chatbot](https://console.bluemix.net/docs/tutorials/android-watson-chatbot.html)
+For **step-by-step instructions**, refer this tutorial - [Build a voice-enabled Android chatbot](https://cloud.ibm.com/docs/tutorials?topic=solution-tutorials-android-watson-chatbot)
 
 The tutorial walks you through the process of defining intents and entities and building a dialog flow for your chatbot to respond to customer queries. You will learn how to enable Speech to Text and Text to Speech services for easy interaction with the Android app.
 
