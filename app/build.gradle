@@ -1,5 +1,11 @@
 apply plugin: 'com.android.application'
 
+repositories {
+    maven {
+        url  "https://dl.bintray.com/ibm-cloud-sdks/ibm-cloud-sdk-repo"
+    }
+}
+
 android {
     compileSdkVersion 26
     buildToolsVersion '28.0.3'
@@ -22,6 +28,12 @@ android {
     lintOptions {
         abortOnError false
     }
+
+    // solve duplicate classes
+    applicationVariants.all { variant ->
+        variant.getRuntimeConfiguration().exclude group: 'com.google.code.findbugs', module: 'jsr305'
+        variant.getRuntimeConfiguration().exclude group: 'com.google.code.findbugs', module: 'annotations'
+    }
 }
 
 dependencies {
@@ -32,14 +44,9 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:26.0.0'
     implementation 'com.android.support:recyclerview-v7:26.0.0'
     implementation 'com.android.support:design:26.0.0'
-    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-    implementation 'com.google.code.gson:gson:2.8.0'
-    implementation 'com.ibm.watson.developer_cloud:assistant:6.11.0'
-    implementation 'com.ibm.watson.developer_cloud:text-to-speech:6.11.0'
-    implementation 'com.ibm.watson.developer_cloud:speech-to-text:6.11.0'
+    implementation 'com.ibm.watson:assistant:7.0.0'
+    implementation 'com.ibm.watson:text-to-speech:7.0.0'
+    implementation 'com.ibm.watson:speech-to-text:7.0.0'
     implementation 'com.ibm.watson.developer_cloud:android-sdk:0.5.0'
     testImplementation 'junit:junit:4.12'
-    implementation 'com.google.android.gms:play-services:10.0.1'
-    implementation 'com.android.support:multidex:1.0.1'
-
 }

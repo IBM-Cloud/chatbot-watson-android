@@ -21,28 +21,27 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.ibm.cloud.sdk.core.http.ServiceCall;
+import com.ibm.cloud.sdk.core.service.security.IamOptions;
 import com.ibm.watson.developer_cloud.android.library.audio.MicrophoneHelper;
 import com.ibm.watson.developer_cloud.android.library.audio.MicrophoneInputStream;
 import com.ibm.watson.developer_cloud.android.library.audio.StreamPlayer;
 import com.ibm.watson.developer_cloud.android.library.audio.utils.ContentType;
-import com.ibm.watson.developer_cloud.assistant.v2.Assistant;
-import com.ibm.watson.developer_cloud.assistant.v2.model.CreateSessionOptions;
-import com.ibm.watson.developer_cloud.assistant.v2.model.MessageInput;
-import com.ibm.watson.developer_cloud.assistant.v2.model.MessageOptions;
-import com.ibm.watson.developer_cloud.assistant.v2.model.MessageResponse;
-import com.ibm.watson.developer_cloud.assistant.v2.model.SessionResponse;
-import com.ibm.watson.developer_cloud.http.ServiceCall;
-import com.ibm.watson.developer_cloud.service.security.IamOptions;
-import com.ibm.watson.developer_cloud.speech_to_text.v1.SpeechToText;
-import com.ibm.watson.developer_cloud.speech_to_text.v1.model.RecognizeOptions;
-import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechRecognitionResults;
-import com.ibm.watson.developer_cloud.speech_to_text.v1.websocket.BaseRecognizeCallback;
-import com.ibm.watson.developer_cloud.text_to_speech.v1.TextToSpeech;
-import com.ibm.watson.developer_cloud.text_to_speech.v1.model.SynthesizeOptions;
+import com.ibm.watson.assistant.v2.Assistant;
+import com.ibm.watson.assistant.v2.model.CreateSessionOptions;
+import com.ibm.watson.assistant.v2.model.MessageInput;
+import com.ibm.watson.assistant.v2.model.MessageOptions;
+import com.ibm.watson.assistant.v2.model.MessageResponse;
+import com.ibm.watson.assistant.v2.model.SessionResponse;
+import com.ibm.watson.speech_to_text.v1.SpeechToText;
+import com.ibm.watson.speech_to_text.v1.model.RecognizeOptions;
+import com.ibm.watson.speech_to_text.v1.model.SpeechRecognitionResults;
+import com.ibm.watson.speech_to_text.v1.websocket.BaseRecognizeCallback;
+import com.ibm.watson.text_to_speech.v1.TextToSpeech;
+import com.ibm.watson.text_to_speech.v1.model.SynthesizeOptions;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -228,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
         try {
           if (watsonAssistantSession == null) {
             ServiceCall<SessionResponse> call = watsonAssistant.createSession(new CreateSessionOptions.Builder().assistantId(mContext.getString(R.string.assistant_id)).build());
-            watsonAssistantSession = call.execute();
+            watsonAssistantSession = call.execute().getResult();
           }
 
           MessageInput input = new MessageInput.Builder()
@@ -239,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
             .input(input)
             .sessionId(watsonAssistantSession.getSessionId())
             .build();
-          MessageResponse response = watsonAssistant.message(options).execute();
+          MessageResponse response = watsonAssistant.message(options).execute().getResult();
             Log.i(TAG, "run: "+response);
           final Message outMessage = new Message();
           if (response != null &&
@@ -282,7 +281,7 @@ public class MainActivity extends AppCompatActivity {
         .text(params[0])
         .voice(SynthesizeOptions.Voice.EN_US_LISAVOICE)
         .accept(SynthesizeOptions.Accept.AUDIO_WAV)
-        .build()).execute());
+        .build()).execute().getResult());
       return "Did synthesize";
     }
   }
