@@ -44,9 +44,9 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:26.0.0'
     implementation 'com.android.support:recyclerview-v7:26.0.0'
     implementation 'com.android.support:design:26.0.0'
-    implementation 'com.ibm.watson:assistant:7.0.0'
-    implementation 'com.ibm.watson:text-to-speech:7.0.0'
-    implementation 'com.ibm.watson:speech-to-text:7.0.0'
+    implementation 'com.ibm.watson:assistant:8.0.0'
+    implementation 'com.ibm.watson:text-to-speech:8.0.0'
+    implementation 'com.ibm.watson:speech-to-text:8.0.0'
     implementation 'com.ibm.watson.developer_cloud:android-sdk:0.5.0'
     testImplementation 'junit:junit:4.12'
 }

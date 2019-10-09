@@ -21,8 +21,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.ibm.cloud.sdk.core.http.HttpMediaType;
 import com.ibm.cloud.sdk.core.http.ServiceCall;
-import com.ibm.cloud.sdk.core.service.security.IamOptions;
+import com.ibm.cloud.sdk.core.security.IamAuthenticator;
 import com.ibm.watson.developer_cloud.android.library.audio.MicrophoneHelper;
 import com.ibm.watson.developer_cloud.android.library.audio.MicrophoneInputStream;
 import com.ibm.watson.developer_cloud.android.library.audio.StreamPlayer;
@@ -69,22 +70,14 @@ public class MainActivity extends AppCompatActivity {
   private TextToSpeech textToSpeech;
 
   private void createServices() {
-    watsonAssistant = new Assistant("2018-11-08", new IamOptions.Builder()
-            .apiKey(mContext.getString(R.string.assistant_apikey))
-            .build());
-    watsonAssistant.setEndPoint(mContext.getString(R.string.assistant_url));
+    watsonAssistant = new Assistant("2018-11-08", new IamAuthenticator(mContext.getString(R.string.assistant_apikey)));
+    watsonAssistant.setServiceUrl(mContext.getString(R.string.assistant_url));
 
-    textToSpeech = new TextToSpeech();
-    textToSpeech.setIamCredentials(new IamOptions.Builder()
-            .apiKey(mContext.getString(R.string.TTS_apikey))
-            .build());
-    textToSpeech.setEndPoint(mContext.getString(R.string.TTS_url));
+    textToSpeech = new TextToSpeech(new IamAuthenticator((mContext.getString(R.string.TTS_apikey))));
+    textToSpeech.setServiceUrl(mContext.getString(R.string.TTS_url));
 
-    speechService = new SpeechToText();
-    speechService.setIamCredentials(new IamOptions.Builder()
-            .apiKey(mContext.getString(R.string.STT_apikey))
-            .build());
-    speechService.setEndPoint(mContext.getString(R.string.STT_url));
+    speechService = new SpeechToText(new IamAuthenticator(mContext.getString(R.string.STT_apikey)));
+    speechService.setServiceUrl(mContext.getString(R.string.STT_url));
   }
 
   @Override
@@ -244,8 +237,8 @@ public class MainActivity extends AppCompatActivity {
           if (response != null &&
             response.getOutput() != null &&
             !response.getOutput().getGeneric().isEmpty() &&
-            "text".equals(response.getOutput().getGeneric().get(0).getResponseType())) {
-            outMessage.setMessage(response.getOutput().getGeneric().get(0).getText());
+            "text".equals(response.getOutput().getGeneric().get(0).responseType())) {
+            outMessage.setMessage(response.getOutput().getGeneric().get(0).text());
             outMessage.setId("2");
 
             messageArrayList.add(outMessage);
@@ -280,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
       streamPlayer.playStream(textToSpeech.synthesize(new SynthesizeOptions.Builder()
         .text(params[0])
         .voice(SynthesizeOptions.Voice.EN_US_LISAVOICE)
-        .accept(SynthesizeOptions.Accept.AUDIO_WAV)
+        .accept(HttpMediaType.AUDIO_WAV)
         .build()).execute().getResult());
       return "Did synthesize";
     }
