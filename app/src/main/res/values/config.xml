@@ -8,23 +8,29 @@
     <!-- REPLACE `ASSISTANT_API_KEY_HERE` with Watson Assistant service API Key-->
     <string name="assistant_apikey">ASSISTANT_API_KEY_HERE</string>
 
-    <!-- REPLACE `ASSISTANT_URL_HERE` with Watson Assistant service URL-->
-    <string name="assistant_url">ASSISTANT_URL_HERE</string>
+    <!-- The URL provided below is for DALLAS region/location -->
+    <!-- If the Assistant service is created in another region/lpcation -->
+    <!-- REPLACE the URL with the one provided in the credentials of the service you created-->
+    <string name="assistant_url">https://gateway.watsonplatform.net/assistant/api</string>
 
 
     <!--Watson Speech To Text(STT) service credentials-->
     <!-- REPLACE `STT_API_KEY_HERE` with Watson Speech to Text service API Key-->
     <string name="STT_apikey">STT_API_KEY_HERE</string>
-
-    <!-- REPLACE `STT_URL_HERE` with Watson Speech to Text service URL-->
-    <string name="STT_url">STT_URL_HERE</string>
+    
+    <!-- The URL provided below is for DALLAS region/location -->
+    <!-- If the STT service is created in another region/lpcation -->
+    <!-- REPLACE the URL with STT URL provided in the service credentials -->
+    <string name="STT_url">https://stream.watsonplatform.net/speech-to-text/api</string>
 
 
     <!--Watson Text To Speech(TTS) service credentials-->
     <!-- REPLACE `TTS_API_KEY_HERE` with Watson Text to Speech service API Key-->
     <string name="TTS_apikey">TTS_API_KEY_HERE</string>
-
-    <!-- REPLACE `TTS_URL_HERE` with Watson Text to Speech service URL-->
-    <string name="TTS_url">TTS_URL_HERE</string>
+    
+    <!-- The URL provided below is for DALLAS region/location -->
+    <!-- If the TTS service is created in another region/lpcation -->
+    <!-- REPLACE the URL with TTS URL provided in the service credentials -->
+    <string name="TTS_url">https://stream.watsonplatform.net/text-to-speech/api</string>
 
 </resources>
