@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
   private TextToSpeech textToSpeech;
 
   private void createServices() {
-    watsonAssistant = new Assistant("2018-11-08", new IamAuthenticator(mContext.getString(R.string.assistant_apikey)));
+    watsonAssistant = new Assistant("2019-02-28", new IamAuthenticator(mContext.getString(R.string.assistant_apikey)));
     watsonAssistant.setServiceUrl(mContext.getString(R.string.assistant_url));
 
     textToSpeech = new TextToSpeech(new IamAuthenticator((mContext.getString(R.string.TTS_apikey))));
