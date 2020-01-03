@@ -237,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
                                             .sessionId(watsonAssistantSession.getResult().getSessionId())
                                             .build();
                                     Response<MessageResponse> response = watsonAssistant.message(options).execute();
-                                    Log.i(TAG, "run: " + response);
+                                    Log.i(TAG, "run: " + response.getResult());
                                     if (response != null &&
                                             response.getResult().getOutput() != null &&
                                             !response.getResult().getOutput().getGeneric().isEmpty()) {

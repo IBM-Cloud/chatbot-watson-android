@@ -16,13 +16,6 @@ public class Message implements Serializable {
     }
 
 
-    public Message(String id, String message, String createdAt) {
-        this.id = id;
-        this.message = message;
-
-
-    }
-
     public Message(RuntimeResponseGeneric r) {
         this.message = "";
         this.title = r.title();
