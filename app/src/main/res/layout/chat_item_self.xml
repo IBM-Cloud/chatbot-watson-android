@@ -3,8 +3,8 @@
     android:layout_height="wrap_content"
     android:gravity="right"
     android:orientation="vertical"
-    android:paddingBottom="5dp"
-    android:paddingLeft="16dp">
+    android:paddingLeft="16dp"
+    android:paddingBottom="5dp">
 
     <!--<TextView
         android:layout_width="wrap_content"
@@ -21,9 +21,9 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:background="@drawable/bg_bubble_self"
+        android:textColor="@android:color/white"
         android:textIsSelectable="true"
-        android:textSize="14sp"
-        android:textColor="@android:color/white"/>
+        android:textSize="14sp" />
 
 
 </LinearLayout>
