@@ -5,14 +5,17 @@ package com.example.vmac.WatBot;
  */
 
 import android.app.Activity;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
+
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.Target;
 
 import java.util.ArrayList;
 
@@ -69,9 +72,10 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             case IMAGE:
                 ((ViewHolder) holder).message.setVisibility(View.GONE);
                 ImageView iv = ((ViewHolder) holder).image;
-                Glide
+                GlideApp
                         .with(iv.getContext())
                         .load(message.getUrl())
+                        .override(Target.SIZE_ORIGINAL,Target.SIZE_ORIGINAL)
                         .into(iv);
         }
     }

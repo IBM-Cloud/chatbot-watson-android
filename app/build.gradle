@@ -4,15 +4,16 @@ repositories {
     maven {
         url  "https://dl.bintray.com/ibm-cloud-sdks/ibm-cloud-sdk-repo"
     }
+    mavenCentral()
 }
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 28
     buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.example.vmac.chatbot"
         minSdkVersion 21
-        targetSdkVersion 26
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -38,9 +39,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support:recyclerview-v7:26.1.0'
-    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
     implementation 'com.ibm.watson:assistant:8.1.0'
     implementation 'com.ibm.watson:text-to-speech:8.1.0'
     implementation 'com.ibm.watson:speech-to-text:8.1.0'
@@ -49,9 +50,10 @@ dependencies {
     implementation 'com.google.android.gms:play-services:10.0.1'
     implementation 'com.android.support:multidex:1.0.1'
 
-    implementation ('com.github.bumptech.glide:glide:4.9.0') {
-        exclude group: "com.android.support"
+    dependencies {
+        implementation 'com.github.bumptech.glide:glide:4.10.0'
+        // Skip this if you don't want to use integration libraries or configure Glide.
+        annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
     }
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
 }
