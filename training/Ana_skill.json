@@ -1,9 +1,240 @@
 {
-  "name": "Ana",
   "intents": [
+    {
+      "intent": "select_procedure",
+      "examples": [
+        {
+          "text": "Tell me what my limit is"
+        },
+        {
+          "text": "I need information about therapy"
+        },
+        {
+          "text": "I need information about tooth repair"
+        },
+        {
+          "text": "Tell me what my coverage is"
+        },
+        {
+          "text": "I need information about eye wear"
+        },
+        {
+          "text": "Tell me what my limit is for eye wear"
+        },
+        {
+          "text": "I need information about glasses"
+        },
+        {
+          "text": "Yes I need to know my policy for buying new glasses"
+        }
+      ]
+    },
+    {
+      "intent": "branch_location",
+      "examples": [
+        {
+          "text": "Where should I go to cancel my policy?"
+        },
+        {
+          "text": "Where is the nearest branch?"
+        },
+        {
+          "text": "Where can I locate your branches?"
+        },
+        {
+          "text": "where is your office?"
+        },
+        {
+          "text": "how far is your office?"
+        },
+        {
+          "text": "nearest office to place"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "list_options",
+      "examples": [
+        {
+          "text": "What do you recommend?"
+        },
+        {
+          "text": "What are my policies?"
+        },
+        {
+          "text": "What are my options?"
+        },
+        {
+          "text": "What is there?"
+        },
+        {
+          "text": "What services do I have?"
+        },
+        {
+          "text": "What services are available?"
+        },
+        {
+          "text": "how helpful are you"
+        },
+        {
+          "text": "What is available?"
+        },
+        {
+          "text": "what can you help with"
+        },
+        {
+          "text": "What are the services?"
+        }
+      ]
+    },
+    {
+      "intent": "goodbye",
+      "examples": [
+        {
+          "text": "Goodbye"
+        },
+        {
+          "text": "That's all"
+        },
+        {
+          "text": "Bye"
+        },
+        {
+          "text": "I'm done"
+        },
+        {
+          "text": "Catch you later"
+        },
+        {
+          "text": "See ya"
+        },
+        {
+          "text": "Nothing more"
+        },
+        {
+          "text": "Later"
+        },
+        {
+          "text": "I don't need any more help"
+        }
+      ]
+    },
+    {
+      "intent": "get_info",
+      "examples": [
+        {
+          "text": "What is my coverage?"
+        },
+        {
+          "text": "I need some information"
+        },
+        {
+          "text": "Tell me what I need to know"
+        },
+        {
+          "text": "tell me about my plan"
+        },
+        {
+          "text": "What are my benefits?"
+        },
+        {
+          "text": "Do I have"
+        },
+        {
+          "text": "I want to know more"
+        },
+        {
+          "text": "I need more information"
+        },
+        {
+          "text": "Am I covered"
+        },
+        {
+          "text": "What is my policy?"
+        },
+        {
+          "text": "When does my policy end?"
+        },
+        {
+          "text": "When does my policy start?"
+        },
+        {
+          "text": "I need info"
+        },
+        {
+          "text": "Can I visit"
+        },
+        {
+          "text": "I don't need to file a claim"
+        },
+        {
+          "text": "Information"
+        }
+      ]
+    },
+    {
+      "intent": "update_policy",
+      "examples": [
+        {
+          "text": "I need more coverage"
+        },
+        {
+          "text": "I need to update my account"
+        },
+        {
+          "text": "I want to change my account details"
+        },
+        {
+          "text": "I want to change my password"
+        },
+        {
+          "text": "My information is wrong"
+        },
+        {
+          "text": "My name is wrong"
+        },
+        {
+          "text": "I want to drop my plan"
+        },
+        {
+          "text": "I want to change my policy"
+        },
+        {
+          "text": "I need more insurance"
+        },
+        {
+          "text": "I need to update my vision plan"
+        },
+        {
+          "text": "Update account details"
+        }
+      ]
+    },
     {
       "intent": "coverage",
       "examples": [
+        {
+          "text": "I need new glasses"
+        },
+        {
+          "text": "I want to get contacts"
+        },
+        {
+          "text": "would my insurance pay for broken glasses?"
+        },
+        {
+          "text": "I need braces. Am I covered?"
+        },
+        {
+          "text": "I need glasses"
+        },
+        {
+          "text": "I need my back adjusted"
+        },
+        {
+          "text": "I need my spine adjusted"
+        },
         {
           "text": "How much coverage do I have for"
         },
@@ -17,31 +248,7 @@
           "text": "I want to get glasses"
         },
         {
-          "text": "How much does my plan cover"
-        },
-        {
-          "text": "I want to get contacts"
-        },
-        {
-          "text": "I need new glasses"
-        },
-        {
           "text": "I need new"
-        },
-        {
-          "text": "I need my spine adjusted"
-        },
-        {
-          "text": "I need my back adjusted"
-        },
-        {
-          "text": "I need glasses"
-        },
-        {
-          "text": "I need braces. Am I covered?"
-        },
-        {
-          "text": "would my insurance pay for broken glasses?"
         },
         {
           "text": "What's the maximum allowance for getting new glasses?"
@@ -51,6 +258,9 @@
         },
         {
           "text": "I want to purchase new glasses"
+        },
+        {
+          "text": "How much does my plan cover"
         },
         {
           "text": "I want to purchase"
@@ -79,13 +289,97 @@
       ]
     },
     {
+      "intent": "casual_conversation",
+      "examples": [
+        {
+          "text": "How are you doing?"
+        },
+        {
+          "text": "Are you okay?"
+        },
+        {
+          "text": "How are you?"
+        },
+        {
+          "text": "How is Ana?"
+        },
+        {
+          "text": "How are you today?"
+        }
+      ]
+    },
+    {
+      "intent": "make_claim",
+      "examples": [
+        {
+          "text": "I just got glasses."
+        },
+        {
+          "text": "I recently went to the doctor."
+        },
+        {
+          "text": "Can I file a claim?"
+        },
+        {
+          "text": "I need to make a claim"
+        },
+        {
+          "text": "Claim"
+        },
+        {
+          "text": "I want to file a recent expense."
+        },
+        {
+          "text": "I want to file a claim."
+        },
+        {
+          "text": "How do I file a claim?"
+        }
+      ]
+    },
+    {
+      "intent": "greeting",
+      "examples": [
+        {
+          "text": "Hey Ana"
+        },
+        {
+          "text": "Anya"
+        },
+        {
+          "text": "Good morning"
+        },
+        {
+          "text": "Good evening"
+        },
+        {
+          "text": "Hello"
+        },
+        {
+          "text": "Hi"
+        },
+        {
+          "text": "Hi Ana"
+        },
+        {
+          "text": "It's me again"
+        },
+        {
+          "text": "Good afternoon"
+        },
+        {
+          "text": "Don't go"
+        },
+        {
+          "text": "Ana"
+        }
+      ]
+    },
+    {
       "intent": "find-doctor",
       "examples": [
         {
-          "text": "Where can I find an in-policy"
-        },
-        {
-          "text": "my shoulder broke"
+          "text": "I am depressed and need help"
         },
         {
           "text": "Got to do something about my depression"
@@ -94,130 +388,33 @@
           "text": "Where can I find a dentist?"
         },
         {
+          "text": "Where can I find an in-policy"
+        },
+        {
+          "text": "my shoulder broke"
+        },
+        {
           "text": "I am looking for psychotherapie"
         },
         {
-          "text": "I am depressed and need help"
-        },
-        {
-          "text": "Who is my closest doctor"
-        },
-        {
-          "text": "Who is my closest dentist"
+          "text": "I need a doctor"
         },
         {
           "text": "Where can I find an in policy"
         },
         {
-          "text": "I need a doctor"
+          "text": "Who is my closest dentist"
+        },
+        {
+          "text": "Who is my closest doctor"
         }
       ]
-    },
-    {
-      "intent": "greeting",
-      "examples": [
-        {
-          "text": "Ana"
-        },
-        {
-          "text": "Don't go"
-        },
-        {
-          "text": "Good afternoon"
-        },
-        {
-          "text": "It's me again"
-        },
-        {
-          "text": "Hi Ana"
-        },
-        {
-          "text": "Hi"
-        },
-        {
-          "text": "Hey Ana"
-        },
-        {
-          "text": "Hello"
-        },
-        {
-          "text": "Good evening"
-        },
-        {
-          "text": "Good morning"
-        },
-        {
-          "text": "Anya"
-        }
-      ]
-    },
-    {
-      "intent": "select_procedure",
-      "examples": [
-        {
-          "text": "I need information about therapy"
-        },
-        {
-          "text": "I need information about tooth repair"
-        },
-        {
-          "text": "Tell me what my coverage is"
-        },
-        {
-          "text": "I need information about eye wear"
-        },
-        {
-          "text": "Tell me what my limit is for eye wear"
-        },
-        {
-          "text": "I need information about glasses"
-        },
-        {
-          "text": "Yes I need to know my policy for buying new glasses"
-        },
-        {
-          "text": "Tell me what my limit is"
-        }
-      ]
-    },
-    {
-      "intent": "branch_location",
-      "examples": [
-        {
-          "text": "Where is the nearest branch?"
-        },
-        {
-          "text": "Where should I go to cancel my policy?"
-        },
-        {
-          "text": "nearest office to place"
-        },
-        {
-          "text": "how far is your office?"
-        },
-        {
-          "text": "where is your office?"
-        },
-        {
-          "text": "Where can I locate your branches?"
-        }
-      ],
-      "description": ""
     },
     {
       "intent": "select_service",
       "examples": [
         {
-          "text": "I need information about physical"
-        },
-        {
-          "text": "I need details about my dental"
-        },
-        {
           "text": "I need to know about my vision plan"
-        },
-        {
-          "text": "Vision"
         },
         {
           "text": "Need info about dental"
@@ -233,21 +430,21 @@
         },
         {
           "text": "I want some details on my vision plan"
+        },
+        {
+          "text": "I need information about physical"
+        },
+        {
+          "text": "I need details about my dental"
+        },
+        {
+          "text": "Vision"
         }
       ]
     },
     {
       "intent": "still-here",
       "examples": [
-        {
-          "text": "Come back"
-        },
-        {
-          "text": "k"
-        },
-        {
-          "text": "I wasn't done"
-        },
         {
           "text": "I need more help"
         },
@@ -259,59 +456,38 @@
         },
         {
           "text": "I'm not done"
+        },
+        {
+          "text": "Come back"
+        },
+        {
+          "text": "k"
+        },
+        {
+          "text": "I wasn't done"
         }
       ]
     },
     {
-      "intent": "get_info",
+      "intent": "off_topic",
       "examples": [
         {
-          "text": "Information"
+          "text": "What is the weather?"
         },
         {
-          "text": "I don't need to file a claim"
+          "text": "Do you like your job?"
         },
         {
-          "text": "Can I visit"
+          "text": "Are you single?"
         },
         {
-          "text": "I need info"
+          "text": "Are you real?"
         },
         {
-          "text": "When does my policy start?"
+          "text": "Are you a robot?"
         },
         {
-          "text": "When does my policy end?"
-        },
-        {
-          "text": "What is my policy?"
-        },
-        {
-          "text": "What is my coverage?"
-        },
-        {
-          "text": "Am I covered"
-        },
-        {
-          "text": "I need more information"
-        },
-        {
-          "text": "I want to know more"
-        },
-        {
-          "text": "Do I have"
-        },
-        {
-          "text": "What are my benefits?"
-        },
-        {
-          "text": "tell me about my plan"
-        },
-        {
-          "text": "Tell me what I need to know"
-        },
-        {
-          "text": "I need some information"
+          "text": "What is the meaning of life?"
         }
       ]
     },
@@ -319,101 +495,37 @@
       "intent": "positive",
       "examples": [
         {
-          "text": "this is fantastic"
-        },
-        {
-          "text": "muchas gracias"
-        },
-        {
-          "text": "fantastic"
-        },
-        {
-          "text": "I love you"
+          "text": "thank you Ana"
         },
         {
           "text": "thank you"
         },
         {
-          "text": "thank you Ana"
+          "text": "I love you"
         },
         {
-          "text": "thank you so much"
-        },
-        {
-          "text": "I really appreciate it"
-        },
-        {
-          "text": "you're awesome"
+          "text": "thanks"
         },
         {
           "text": "that's great"
         },
         {
-          "text": "thanks"
-        }
-      ]
-    },
-    {
-      "intent": "select_detail",
-      "examples": [
-        {
-          "text": "till now nothing but I will have to see my dentist next week and wonder which services are covered by my plan"
+          "text": "you're awesome"
         },
         {
-          "text": "What is my term for"
+          "text": "I really appreciate it"
         },
         {
-          "text": "What is the code for"
+          "text": "thank you so much"
         },
         {
-          "text": "What is the limit for glasses?"
+          "text": "fantastic"
         },
         {
-          "text": "eye glasses"
+          "text": "muchas gracias"
         },
         {
-          "text": "Hi Ana, I have a cavity that needs to be filled and I want to know what my coverage is"
-        },
-        {
-          "text": "I need the code for"
-        },
-        {
-          "text": "I need the term for"
-        },
-        {
-          "text": "When does my plan end?"
-        }
-      ]
-    },
-    {
-      "intent": "goodbye",
-      "examples": [
-        {
-          "text": "Catch you later"
-        },
-        {
-          "text": "Goodbye"
-        },
-        {
-          "text": "I don't need any more help"
-        },
-        {
-          "text": "Later"
-        },
-        {
-          "text": "Nothing more"
-        },
-        {
-          "text": "See ya"
-        },
-        {
-          "text": "That's all"
-        },
-        {
-          "text": "Bye"
-        },
-        {
-          "text": "I'm done"
+          "text": "this is fantastic"
         }
       ]
     },
@@ -421,19 +533,13 @@
       "intent": "claim_procedure",
       "examples": [
         {
-          "text": "I need to file a claim for contacts"
+          "text": "I had my back adjusted"
         },
         {
-          "text": "I got new contacts"
+          "text": "I had a therapy session"
         },
         {
-          "text": "I got my teeth cleaned"
-        },
-        {
-          "text": "Glasses"
-        },
-        {
-          "text": "Dr Feel Good"
+          "text": "I got new glasses"
         },
         {
           "text": "I need to file a claim for physical therapy"
@@ -469,54 +575,101 @@
           "text": "I just got new contact lens"
         },
         {
-          "text": "I had my back adjusted"
+          "text": "Glasses"
         },
         {
-          "text": "I had a therapy session"
+          "text": "I got my teeth cleaned"
         },
         {
-          "text": "I got new glasses"
+          "text": "I got new contacts"
+        },
+        {
+          "text": "I need to file a claim for contacts"
+        },
+        {
+          "text": "Dr Feel Good"
         }
       ]
     },
     {
-      "intent": "list_options",
+      "intent": "negative",
       "examples": [
         {
-          "text": "What are my policies?"
+          "text": "Why can't you do your job"
         },
         {
-          "text": "What are the services?"
+          "text": "I hate you"
         },
         {
-          "text": "What do you recommend?"
+          "text": "I hate this thing"
         },
         {
-          "text": "what can you help with"
+          "text": "Dumb machine"
         },
         {
-          "text": "What is available?"
+          "text": "Why won't you work"
         },
         {
-          "text": "how helpful are you"
+          "text": "Dumb bot"
         },
         {
-          "text": "What services are available?"
+          "text": "You're stupid"
         },
         {
-          "text": "What services do I have?"
+          "text": "You're quite rude"
         },
         {
-          "text": "What is there?"
+          "text": "Wow that's mean"
         },
         {
-          "text": "What are my options?"
+          "text": "Give me someone real to talk to"
+        }
+      ]
+    },
+    {
+      "intent": "select_detail",
+      "examples": [
+        {
+          "text": "I need the term for"
+        },
+        {
+          "text": "When does my plan end?"
+        },
+        {
+          "text": "What is the code for"
+        },
+        {
+          "text": "What is my term for"
+        },
+        {
+          "text": "till now nothing but I will have to see my dentist next week and wonder which services are covered by my plan"
+        },
+        {
+          "text": "What is the limit for glasses?"
+        },
+        {
+          "text": "eye glasses"
+        },
+        {
+          "text": "Hi Ana, I have a cavity that needs to be filled and I want to know what my coverage is"
+        },
+        {
+          "text": "I need the code for"
         }
       ]
     },
     {
       "intent": "no-response",
       "examples": [
+        {
+          "text": "I want a beer"
+        },
+        {
+          "text": "Get me a beer"
+        },
+        {
+          "text": "Help me"
+        },
         {
           "text": "I have an emergency"
         },
@@ -531,237 +684,14 @@
         },
         {
           "text": "I may die"
-        },
-        {
-          "text": "I want a beer"
-        },
-        {
-          "text": "Get me a beer"
-        },
-        {
-          "text": "Help me"
-        }
-      ]
-    },
-    {
-      "intent": "casual_conversation",
-      "examples": [
-        {
-          "text": "How are you?"
-        },
-        {
-          "text": "How is Ana?"
-        },
-        {
-          "text": "How are you today?"
-        },
-        {
-          "text": "How are you doing?"
-        },
-        {
-          "text": "Are you okay?"
-        }
-      ]
-    },
-    {
-      "intent": "make_claim",
-      "examples": [
-        {
-          "text": "Claim"
-        },
-        {
-          "text": "I want to file a recent expense."
-        },
-        {
-          "text": "I want to file a claim."
-        },
-        {
-          "text": "I recently went to the doctor."
-        },
-        {
-          "text": "I need to make a claim"
-        },
-        {
-          "text": "Can I file a claim?"
-        },
-        {
-          "text": "How do I file a claim?"
-        },
-        {
-          "text": "I just got glasses."
-        }
-      ]
-    },
-    {
-      "intent": "negative",
-      "examples": [
-        {
-          "text": "Give me someone real to talk to"
-        },
-        {
-          "text": "Wow that's mean"
-        },
-        {
-          "text": "You're quite rude"
-        },
-        {
-          "text": "You're stupid"
-        },
-        {
-          "text": "Dumb bot"
-        },
-        {
-          "text": "Dumb machine"
-        },
-        {
-          "text": "I hate this thing"
-        },
-        {
-          "text": "I hate you"
-        },
-        {
-          "text": "Why can't you do your job"
-        },
-        {
-          "text": "Why won't you work"
-        }
-      ]
-    },
-    {
-      "intent": "update_policy",
-      "examples": [
-        {
-          "text": "My name is wrong"
-        },
-        {
-          "text": "My information is wrong"
-        },
-        {
-          "text": "I want to change my password"
-        },
-        {
-          "text": "I want to change my account details"
-        },
-        {
-          "text": "I need to update my account"
-        },
-        {
-          "text": "I need more coverage"
-        },
-        {
-          "text": "I want to drop my plan"
-        },
-        {
-          "text": "I want to change my policy"
-        },
-        {
-          "text": "I need more insurance"
-        },
-        {
-          "text": "Update account details"
-        },
-        {
-          "text": "I need to update my vision plan"
-        }
-      ]
-    },
-    {
-      "intent": "off_topic",
-      "examples": [
-        {
-          "text": "What is the weather?"
-        },
-        {
-          "text": "What is the meaning of life?"
-        },
-        {
-          "text": "Are you a robot?"
-        },
-        {
-          "text": "Are you real?"
-        },
-        {
-          "text": "Are you single?"
-        },
-        {
-          "text": "Do you like your job?"
         }
       ]
     }
   ],
   "entities": [
     {
-      "entity": "family",
-      "values": [
-        {
-          "type": "synonyms",
-          "value": "child",
-          "synonyms": [
-            "child",
-            "daughter",
-            "kid",
-            "minion",
-            "son"
-          ]
-        },
-        {
-          "type": "synonyms",
-          "value": "parent",
-          "synonyms": [
-            "father",
-            "mother"
-          ]
-        },
-        {
-          "type": "synonyms",
-          "value": "spouse",
-          "synonyms": [
-            "husband",
-            "partner",
-            "significant other",
-            "wife"
-          ]
-        }
-      ]
-    },
-    {
       "entity": "types",
       "values": [
-        {
-          "type": "synonyms",
-          "value": "dental",
-          "synonyms": [
-            "bicuspid",
-            "braces",
-            "bridge",
-            "cavity",
-            "crown",
-            "dental work",
-            "dentist",
-            "molar",
-            "oral surgeon",
-            "orthodontist",
-            "root canal",
-            "teeth",
-            "teeth cleaning",
-            "tooth",
-            "tooth repair"
-          ]
-        },
-        {
-          "type": "synonyms",
-          "value": "mental",
-          "synonyms": [
-            "anxiety",
-            "depression",
-            "mental health",
-            "psychiatrist",
-            "psychologist",
-            "psychotherapy",
-            "shrink",
-            "therapist"
-          ]
-        },
         {
           "type": "synonyms",
           "value": "physical",
@@ -789,12 +719,146 @@
             "ocular",
             "optometrist"
           ]
+        },
+        {
+          "type": "synonyms",
+          "value": "mental",
+          "synonyms": [
+            "anxiety",
+            "depression",
+            "mental health",
+            "psychiatrist",
+            "psychologist",
+            "psychotherapy",
+            "shrink",
+            "therapist"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "dental",
+          "synonyms": [
+            "bicuspid",
+            "braces",
+            "bridge",
+            "cavity",
+            "crown",
+            "dental work",
+            "dentist",
+            "molar",
+            "oral surgeon",
+            "orthodontist",
+            "root canal",
+            "teeth",
+            "teeth cleaning",
+            "tooth",
+            "tooth repair"
+          ]
+        }
+      ]
+    },
+    {
+      "entity": "details",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "limit",
+          "synonyms": [
+            "balance",
+            "cash",
+            "deductible",
+            "remaining"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "coverage",
+          "synonyms": [
+            "covered",
+            "insurance covers",
+            "percentage"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "code",
+          "synonyms": [
+            "billing code",
+            "billing information",
+            "doctor code",
+            "number for form"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "start",
+          "synonyms": [
+            "first",
+            "start date"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "term",
+          "synonyms": [
+            "billing period",
+            "period"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "end",
+          "synonyms": [
+            "end date",
+            "end of coverage",
+            "last",
+            "plan end",
+            "plan termination"
+          ]
+        }
+      ]
+    },
+    {
+      "entity": "verb",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "information",
+          "synonyms": [
+            "additional details",
+            "data",
+            "description",
+            "info"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "claim",
+          "synonyms": [
+            "expense",
+            "file",
+            "reimbursement"
+          ]
         }
       ]
     },
     {
       "entity": "procedures",
       "values": [
+        {
+          "type": "synonyms",
+          "value": "chiropractor",
+          "synonyms": [
+            "adjustment",
+            "back",
+            "back adjusted",
+            "back doctor",
+            "back pain",
+            "chiropractic",
+            "massage",
+            "spine"
+          ]
+        },
         {
           "type": "synonyms",
           "value": "physiotherapy",
@@ -869,20 +933,6 @@
         },
         {
           "type": "synonyms",
-          "value": "chiropractor",
-          "synonyms": [
-            "adjustment",
-            "back",
-            "back adjusted",
-            "back doctor",
-            "back pain",
-            "chiropractic",
-            "massage",
-            "spine"
-          ]
-        },
-        {
-          "type": "synonyms",
           "value": "eye exam",
           "synonyms": [
             "annual exam",
@@ -904,67 +954,6 @@
             "lenses",
             "specks",
             "vision correction"
-          ]
-        }
-      ]
-    },
-    {
-      "entity": "details",
-      "values": [
-        {
-          "type": "synonyms",
-          "value": "start",
-          "synonyms": [
-            "first",
-            "start date"
-          ]
-        },
-        {
-          "type": "synonyms",
-          "value": "term",
-          "synonyms": [
-            "billing period",
-            "period"
-          ]
-        },
-        {
-          "type": "synonyms",
-          "value": "end",
-          "synonyms": [
-            "end date",
-            "end of coverage",
-            "last",
-            "plan end",
-            "plan termination"
-          ]
-        },
-        {
-          "type": "synonyms",
-          "value": "code",
-          "synonyms": [
-            "billing code",
-            "billing information",
-            "doctor code",
-            "number for form"
-          ]
-        },
-        {
-          "type": "synonyms",
-          "value": "coverage",
-          "synonyms": [
-            "covered",
-            "insurance covers",
-            "percentage"
-          ]
-        },
-        {
-          "type": "synonyms",
-          "value": "limit",
-          "synonyms": [
-            "balance",
-            "cash",
-            "deductible",
-            "remaining"
           ]
         }
       ]
@@ -1011,61 +1000,47 @@
       ]
     },
     {
-      "entity": "verb",
+      "entity": "family",
       "values": [
         {
           "type": "synonyms",
-          "value": "information",
+          "value": "child",
           "synonyms": [
-            "additional details",
-            "data",
-            "description",
-            "info"
+            "child",
+            "daughter",
+            "kid",
+            "minion",
+            "son"
           ]
         },
         {
           "type": "synonyms",
-          "value": "claim",
+          "value": "spouse",
           "synonyms": [
-            "expense",
-            "file",
-            "reimbursement"
+            "husband",
+            "partner",
+            "significant other",
+            "wife"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "parent",
+          "synonyms": [
+            "father",
+            "mother"
           ]
         }
       ]
     }
   ],
-  "language": "en",
   "metadata": {
     "api_version": {
-      "major_version": "v1",
-      "minor_version": "2018-07-10"
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
     }
   },
-  "description": "Skill to be used for testing and training.",
   "dialog_nodes": [
-    {
-      "type": "standard",
-      "output": {
-        "text": "I can't talk about that. But I can tell you about your vision, dental, mental, and physical plans."
-      },
-      "parent": "node_12_1476151077484",
-      "conditions": "anything_else",
-      "dialog_node": "node_14_1476151372574",
-      "previous_sibling": "node_13_1476151143532"
-    },
-    {
-      "type": "standard",
-      "output": {},
-      "parent": "node_12_1476151077484",
-      "next_step": {
-        "behavior": "jump_to",
-        "selector": "body",
-        "dialog_node": "node_8_1470846944134"
-      },
-      "conditions": "@types",
-      "dialog_node": "node_13_1476151143532"
-    },
     {
       "type": "standard",
       "output": {
@@ -1078,349 +1053,6 @@
       },
       "conditions": "input.text",
       "dialog_node": "node_16_1472607557405"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "What was the date of your appointment? I prefer YYYY-MM-DD to make filing easier for me."
-      },
-      "parent": "node_7_1472590161269",
-      "context": {
-        "claim_step": "date",
-        "claim_procedure": "@procedures"
-      },
-      "conditions": "@procedures",
-      "dialog_node": "node_8_1472590259253"
-    },
-    {
-      "type": "slot",
-      "output": {},
-      "parent": "node_6_1475611948267",
-      "metadata": {},
-      "variable": "$person",
-      "dialog_node": "slot_1_1523340074454"
-    },
-    {
-      "type": "standard",
-      "output": {},
-      "parent": "node_6_1472590118317",
-      "next_step": {
-        "behavior": "jump_to",
-        "selector": "condition",
-        "dialog_node": "node_8_1472590259253"
-      },
-      "conditions": "@procedures",
-      "dialog_node": "node_19_1475623879868",
-      "previous_sibling": "node_7_1472590161269"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "The procedure categories are:  <? $procedures ?>. Pick one of those for me."
-      },
-      "parent": "node_6_1472590118317",
-      "conditions": "#list_options",
-      "dialog_node": "node_7_1472590161269"
-    },
-    {
-      "type": "slot",
-      "output": {},
-      "parent": "node_5_1523343155066",
-      "metadata": {},
-      "variable": "$location",
-      "dialog_node": "slot_6_1523343180294"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "Alright. What can I do for you? I mostly search boring insurance documents or help you file claims."
-      },
-      "parent": "node_2_1472663851939",
-      "conditions": "input.text",
-      "dialog_node": "node_10_1476150029988"
-    },
-    {
-      "type": "standard",
-      "output": {},
-      "parent": "node_13_1472604740084",
-      "next_step": {
-        "behavior": "jump_to",
-        "selector": "condition",
-        "dialog_node": "node_11_1472598207218"
-      },
-      "conditions": "input.text.matches('^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$')",
-      "dialog_node": "node_1_1472758289866"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "Oh no. Let's get this fixed."
-      },
-      "parent": "node_16_1472607557405",
-      "conditions": "#negative",
-      "dialog_node": "node_3_1472761519777",
-      "previous_sibling": "node_2_1472761508426"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "Happy to help!"
-      },
-      "parent": "node_16_1472607557405",
-      "conditions": "#positive",
-      "dialog_node": "node_2_1472761508426"
-    },
-    {
-      "type": "event_handler",
-      "output": {
-        "text": "This facility is not available online. Visit our nearest branch for more details.Where do you stay?"
-      },
-      "parent": "slot_12_1523344212518",
-      "metadata": {},
-      "event_name": "focus",
-      "dialog_node": "handler_14_1523344212518",
-      "previous_sibling": "handler_13_1523344212518"
-    },
-    {
-      "type": "event_handler",
-      "output": {},
-      "parent": "slot_12_1523344212518",
-      "context": {
-        "location": "@sys-location"
-      },
-      "metadata": {},
-      "conditions": "@sys-location",
-      "event_name": "input",
-      "dialog_node": "handler_13_1523344212518"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "Alright, last thing. What is the amount you want to claim?"
-      },
-      "parent": "node_12_1472604720806",
-      "context": {
-        "claim_step": "amount",
-        "claim_provider": "<? input.text ?>"
-      },
-      "conditions": "input.text",
-      "dialog_node": "node_15_1472604976973"
-    },
-    {
-      "type": "event_handler",
-      "output": {
-        "text": "Hi ! What should I call you?"
-      },
-      "parent": "slot_1_1523340074454",
-      "metadata": {},
-      "event_name": "focus",
-      "dialog_node": "handler_3_1523340074454",
-      "previous_sibling": "handler_2_1523340074454"
-    },
-    {
-      "type": "event_handler",
-      "parent": "slot_1_1523340074454",
-      "context": {
-        "person": "@sys-person"
-      },
-      "conditions": "@sys-person",
-      "event_name": "input",
-      "dialog_node": "handler_2_1523340074454"
-    },
-    {
-      "type": "slot",
-      "output": {},
-      "parent": "node_4_1523341989296",
-      "metadata": {},
-      "variable": "$location",
-      "dialog_node": "slot_12_1523344212518"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "I can't file claims for that."
-      },
-      "parent": "node_3_1472589537910",
-      "conditions": "anything_else",
-      "dialog_node": "node_18_1475623617512",
-      "previous_sibling": "node_6_1472590118317"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "Alright, I can do a @types claim. I also need to know the specific procedure you had done."
-      },
-      "parent": "node_3_1472589537910",
-      "context": {
-        "claim_step": "procedure",
-        "chosen_service": "@types"
-      },
-      "conditions": "@types",
-      "dialog_node": "node_6_1472590118317",
-      "previous_sibling": "node_5_1472590033232"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "Got it. Now what was the date of your appointment?"
-      },
-      "parent": "node_3_1472589537910",
-      "next_step": {
-        "behavior": "jump_to",
-        "selector": "condition",
-        "dialog_node": "node_8_1472590259253"
-      },
-      "conditions": "@procedures",
-      "dialog_node": "node_5_1472590033232"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "What did you need to know about @procedures?"
-      },
-      "parent": "node_2_1475683599072",
-      "next_step": {
-        "behavior": "jump_to",
-        "selector": "condition",
-        "dialog_node": "node_14_1470851039515"
-      },
-      "conditions": "@procedures",
-      "dialog_node": "node_4_1476111372486"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "I don't have anything for '<? input.text ?>', but I can tell you the limit, coverage, term, start, end, or code for your plan."
-      },
-      "parent": "node_6_1471294106656",
-      "conditions": "anything_else",
-      "dialog_node": "node_13_1475622927885",
-      "previous_sibling": "node_2_1471295022480"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "Grabbing the  @details for <? $chosen_procedure ?>."
-      },
-      "parent": "node_6_1471294106656",
-      "context": {
-        "chosen_detail": "@details"
-      },
-      "conditions": "@details",
-      "dialog_node": "node_2_1471295022480"
-    },
-    {
-      "type": "event_handler",
-      "output": {
-        "text": "Where do you stay?"
-      },
-      "parent": "slot_6_1523343180294",
-      "metadata": {},
-      "event_name": "focus",
-      "dialog_node": "handler_8_1523343180294",
-      "previous_sibling": "handler_7_1523343180294"
-    },
-    {
-      "type": "event_handler",
-      "output": {},
-      "parent": "slot_6_1523343180294",
-      "context": {
-        "location": "@sys-location"
-      },
-      "metadata": {},
-      "conditions": "@sys-location",
-      "event_name": "input",
-      "dialog_node": "handler_7_1523343180294"
-    },
-    {
-      "type": "standard",
-      "output": {},
-      "parent": "node_11_1475612980634",
-      "next_step": {
-        "behavior": "jump_to",
-        "selector": "condition",
-        "dialog_node": "node_14_1470851039515"
-      },
-      "conditions": "@procedures",
-      "dialog_node": "node_12_1475613151217"
-    },
-    {
-      "type": "standard",
-      "output": {},
-      "parent": "node_11_1472598207218",
-      "next_step": {
-        "behavior": "jump_to",
-        "selector": "condition",
-        "dialog_node": "node_11_1472598207218"
-      },
-      "conditions": "input.text.matches('^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$')",
-      "dialog_node": "node_14_1472604886510",
-      "previous_sibling": "node_13_1472604740084"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "Okay. Please enter the date again. Use YYYY-MM-DD."
-      },
-      "parent": "node_11_1472598207218",
-      "context": {
-        "claim_step": "date"
-      },
-      "conditions": "@response:no",
-      "dialog_node": "node_13_1472604740084",
-      "previous_sibling": "node_12_1472604720806"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "Okay. Please enter the date again. Use YYYY-MM-DD."
-      },
-      "parent": "node_11_1472598207218",
-      "context": {
-        "claim_step": "date"
-      },
-      "conditions": "anything_else",
-      "dialog_node": "node_1_1476991423783",
-      "previous_sibling": "node_14_1472604886510"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "Fantastic. What is the name of the provider or physician you went to?"
-      },
-      "parent": "node_11_1472598207218",
-      "context": {
-        "claim_step": "provider"
-      },
-      "conditions": "@response:yes",
-      "dialog_node": "node_12_1472604720806"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "I have a date of <? input.text ?>. Is that right?"
-      },
-      "parent": "node_8_1472590259253",
-      "context": {
-        "claim_date": "<? input.text ?>",
-        "claim_step": "verifyDate"
-      },
-      "conditions": "input.text.matches('^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$')",
-      "dialog_node": "node_11_1472598207218"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "I can find some info on your vision, dental, mental, and physical plans."
-      },
-      "parent": "node_1_1472670944646",
-      "next_step": {
-        "behavior": "jump_to",
-        "selector": "condition",
-        "dialog_node": "node_8_1470846944134"
-      },
-      "conditions": "#list_options",
-      "dialog_node": "node_5_1471288584916"
     },
     {
       "type": "standard",
@@ -1447,6 +1079,81 @@
     {
       "type": "standard",
       "output": {
+        "text": "I have a date of <? input.text ?>. Is that right?"
+      },
+      "parent": "node_8_1472590259253",
+      "context": {
+        "claim_date": "<? input.text ?>",
+        "claim_step": "verifyDate"
+      },
+      "conditions": "input.text.matches('^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$')",
+      "dialog_node": "node_11_1472598207218"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "I don't have anything for '<? input.text ?>', but I can tell you the limit, coverage, term, start, end, or code for your plan."
+      },
+      "parent": "node_6_1471294106656",
+      "conditions": "anything_else",
+      "dialog_node": "node_13_1475622927885",
+      "previous_sibling": "node_2_1471295022480"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "Grabbing the  @details for <? $chosen_procedure ?>."
+      },
+      "parent": "node_6_1471294106656",
+      "context": {
+        "chosen_detail": "@details"
+      },
+      "conditions": "@details",
+      "dialog_node": "node_2_1471295022480"
+    },
+    {
+      "type": "standard",
+      "output": {},
+      "parent": "node_1_1476991423783",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_11_1472598207218"
+      },
+      "conditions": "input.text.matches('^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$')",
+      "dialog_node": "node_2_1476991501853"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "Oh no. Let's get this fixed."
+      },
+      "parent": "node_16_1472607557405",
+      "conditions": "#negative",
+      "dialog_node": "node_3_1472761519777",
+      "previous_sibling": "node_2_1472761508426"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "Happy to help!"
+      },
+      "parent": "node_16_1472607557405",
+      "conditions": "#positive",
+      "dialog_node": "node_2_1472761508426"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "Alright. What can I do for you? I mostly search boring insurance documents or help you file claims."
+      },
+      "parent": "node_2_1472663851939",
+      "conditions": "input.text",
+      "dialog_node": "node_10_1476150029988"
+    },
+    {
+      "type": "standard",
+      "output": {
         "text": "Well, that's not a procedure I know about. I can talk about <? $procedures ?> if you're still interested."
       },
       "parent": "node_11_1470849685631",
@@ -1465,6 +1172,60 @@
       },
       "conditions": "@procedures",
       "dialog_node": "node_14_1470851039515"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "What was the date of your appointment? I prefer YYYY-MM-DD to make filing easier for me."
+      },
+      "parent": "node_7_1472590161269",
+      "context": {
+        "claim_step": "date",
+        "claim_procedure": "@procedures"
+      },
+      "conditions": "@procedures",
+      "dialog_node": "node_8_1472590259253"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "I can tell you about the limit, coverage, term, start, end, or code. You probably are interested in coverage."
+      },
+      "parent": "node_14_1470851039515",
+      "conditions": "#list_options",
+      "dialog_node": "node_6_1471294106656",
+      "previous_sibling": "node_1_1471294589032"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": ""
+      },
+      "parent": "node_14_1470851039515",
+      "context": {
+        "chosen_detail": "@details"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_2_1471295022480"
+      },
+      "conditions": "@details",
+      "dialog_node": "node_1_1471294589032"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "I can find some info on your vision, dental, mental, and physical plans."
+      },
+      "parent": "node_1_1472670944646",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_8_1470846944134"
+      },
+      "conditions": "#list_options",
+      "dialog_node": "node_5_1471288584916"
     },
     {
       "type": "standard",
@@ -1499,278 +1260,186 @@
     {
       "type": "standard",
       "output": {
-        "text": "I can tell you about the limit, coverage, term, start, end, or code. You probably are interested in coverage."
+        "text": "Okay. Please enter the date again. Use YYYY-MM-DD."
       },
-      "parent": "node_14_1470851039515",
-      "conditions": "#list_options",
-      "dialog_node": "node_6_1471294106656",
-      "previous_sibling": "node_1_1471294589032"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": ""
-      },
-      "parent": "node_14_1470851039515",
+      "parent": "node_11_1472598207218",
       "context": {
-        "chosen_detail": "@details"
+        "claim_step": "date"
       },
-      "next_step": {
-        "behavior": "jump_to",
-        "selector": "condition",
-        "dialog_node": "node_2_1471295022480"
-      },
-      "conditions": "@details",
-      "dialog_node": "node_1_1471294589032"
+      "conditions": "anything_else",
+      "dialog_node": "node_1_1476991423783",
+      "previous_sibling": "node_14_1472604886510"
     },
     {
       "type": "standard",
       "output": {},
-      "parent": "node_1_1476991423783",
+      "parent": "node_11_1472598207218",
       "next_step": {
         "behavior": "jump_to",
         "selector": "condition",
         "dialog_node": "node_11_1472598207218"
       },
       "conditions": "input.text.matches('^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$')",
-      "dialog_node": "node_2_1476991501853"
+      "dialog_node": "node_14_1472604886510",
+      "previous_sibling": "node_13_1472604740084"
     },
     {
       "type": "standard",
       "output": {
-        "text": "I can talk about your vision, dental, mental, and physical plans."
+        "text": "Okay. Please enter the date again. Use YYYY-MM-DD."
       },
-      "conditions": "#list_options",
-      "dialog_node": "node_5_1476113231936",
-      "previous_sibling": "node_3_1476110635133"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "Okay, let me do the boring reading for you. What service did you need to know more about?"
-      },
-      "conditions": "#get_info && !(@details) && !(@procedures) && !(@types)",
-      "dialog_node": "node_1_1472670944646",
-      "previous_sibling": "node_11_1476150557365"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "Let me get that for you. Grabbing the  @details for @procedures."
-      },
+      "parent": "node_11_1472598207218",
       "context": {
-        "chosen_detail": "@details",
-        "chosen_procedure": "@procedures"
+        "claim_step": "date"
       },
-      "conditions": "@details && #select_detail && @procedures",
-      "dialog_node": "node_9_1472596541094",
-      "previous_sibling": "node_12_1476151077484"
+      "conditions": "@response:no",
+      "dialog_node": "node_13_1472604740084",
+      "previous_sibling": "node_12_1472604720806"
     },
     {
       "type": "standard",
       "output": {
-        "text": "Goodbye."
+        "text": "Fantastic. What is the name of the provider or physician you went to?"
       },
-      "conditions": "#goodbye",
-      "dialog_node": "node_1_1471530144227",
-      "previous_sibling": "node_4_1470846498634"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": {
-          "values": [
-            "Sorry to hear that.This facility is not available online. Visit our nearest branch to cancel your policy"
-          ],
-          "selection_policy": "sequential"
-        }
-      },
-      "metadata": {
-        "fallback": "leave"
-      },
-      "conditions": "#Cancel_Policy",
-      "digress_in": "does_not_return",
-      "dialog_node": "node_4_1523341989296",
-      "digress_out": "allow_all",
-      "previous_sibling": "node_7_1475612009751"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "Always happy to help $person!"
-      },
-      "metadata": {},
-      "conditions": "#positive",
-      "dialog_node": "node_1_1472655156255",
-      "previous_sibling": "node_1_1472578460792"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "I'm not able to answer that."
-      },
-      "conditions": "intents.size() == 0",
-      "dialog_node": "node_9_1475612074357",
-      "previous_sibling": "node_6_1475611948267"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "Sure. What can I help you with?"
-      },
-      "conditions": "#still-here",
-      "dialog_node": "node_2_1475683599072",
-      "previous_sibling": "node_1_1471530144227"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "Sorry, I don't understand that one."
-      },
-      "conditions": "anything_else",
-      "dialog_node": "node_10_1475612266683",
-      "previous_sibling": "node_5_1523343155066"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "I can get your @details for you. What service do you need info for? I've got information on your vision, dental, mental, and physical plans."
-      },
+      "parent": "node_11_1472598207218",
       "context": {
-        "chosen_detail": "@details"
+        "claim_step": "provider"
       },
-      "conditions": "#get_info && @details",
-      "dialog_node": "node_12_1476151077484",
-      "previous_sibling": "node_1_1471971552653"
+      "conditions": "@response:yes",
+      "dialog_node": "node_12_1472604720806"
     },
     {
       "type": "standard",
-      "output": {
-        "text": "Your coverage for @procedures is "
-      },
-      "context": {
-        "chosen_detail": "coverage",
-        "chosen_procedure": "@procedures"
-      },
-      "conditions": "#coverage && @procedures",
-      "dialog_node": "node_1_1471622977336",
-      "previous_sibling": "node_9_1472596541094"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "I can't help you with that. I'm just a bot to help you with your insurance documents."
-      },
-      "conditions": "#no-response",
-      "dialog_node": "node_1_1475683470899",
-      "previous_sibling": "node_2_1472663851939"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "I'm on the clock. Let's talk later."
-      },
-      "conditions": "#off_topic",
-      "dialog_node": "node_1_1472137756520",
-      "previous_sibling": "node_1_1475683470899"
-    },
-    {
-      "type": "frame",
-      "output": {
-        "text": {
-          "values": [
-            "Oh! you are from $location. Check https://www.google.com/maps?daddr=$location for the nearest branch."
-          ],
-          "selection_policy": "sequential"
-        }
-      },
-      "metadata": {
-        "fallback": "leave"
-      },
-      "conditions": "@location",
-      "digress_in": "does_not_return",
-      "dialog_node": "node_5_1523343155066",
-      "digress_out": "allow_all",
-      "previous_sibling": "node_4_1523341989296",
-      "digress_out_slots": "not_allowed"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "What was the date of your appointment? I prefer YYYY-MM-DD to make filing easier for me."
-      },
-      "context": {
-        "claim_step": "date",
-        "claim_procedure": "@procedures"
-      },
+      "output": {},
+      "parent": "node_13_1472604740084",
       "next_step": {
         "behavior": "jump_to",
         "selector": "condition",
         "dialog_node": "node_11_1472598207218"
       },
-      "conditions": "#make_claim && @procedures",
-      "dialog_node": "node_3_1476991627470",
-      "previous_sibling": "node_3_1472589537910"
+      "conditions": "input.text.matches('^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$')",
+      "dialog_node": "node_1_1472758289866"
     },
     {
       "type": "standard",
       "output": {
-        "text": "I'm fantastic. How are you?"
+        "text": "Alright, last thing. What is the amount you want to claim?"
       },
-      "conditions": "#casual_conversation",
-      "dialog_node": "node_2_1472663851939",
-      "previous_sibling": "node_2_1475683599072"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "Right now I can't help with locating or scheduling providers, but that feature is coming soon!"
-      },
-      "conditions": "#find-doctor",
-      "dialog_node": "node_11_1476150557365",
-      "previous_sibling": "node_5_1476113231936"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "Unfortunately I can only tell you about your coverage right now. My AI overlords plan to add family coverage soon!"
-      },
-      "conditions": "@family",
-      "dialog_node": "node_3_1476110635133",
-      "previous_sibling": "node_9_1475612074357"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "Let me take care of that paperwork for you. What did you have done?"
-      },
-      "conditions": "#make_claim",
-      "dialog_node": "node_3_1472589537910",
-      "previous_sibling": "node_1_1471622977336"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "text": "Alright, I can tell you more about your @types plan. Let's narrow it down a little. Which procedure do you need information for?"
-      },
+      "parent": "node_12_1472604720806",
       "context": {
-        "chosen_service": "@types"
+        "claim_step": "amount",
+        "claim_provider": "<? input.text ?>"
       },
-      "conditions": "#select_service && @types",
-      "dialog_node": "node_8_1470846944134",
-      "previous_sibling": "node_1_1472670944646"
+      "conditions": "input.text",
+      "dialog_node": "node_15_1472604976973"
     },
     {
       "type": "standard",
       "output": {
-        "text": "How can I help with your @types policy? Do you need information or to file a claim?"
+        "text": "I can't talk about that. But I can tell you about your vision, dental, mental, and physical plans."
       },
+      "parent": "node_12_1476151077484",
+      "conditions": "anything_else",
+      "dialog_node": "node_14_1476151372574",
+      "previous_sibling": "node_13_1476151143532"
+    },
+    {
+      "type": "standard",
+      "output": {},
+      "parent": "node_12_1476151077484",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_8_1470846944134"
+      },
+      "conditions": "@types",
+      "dialog_node": "node_13_1476151143532"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "What did you need to know about @procedures?"
+      },
+      "parent": "node_2_1475683599072",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_14_1470851039515"
+      },
+      "conditions": "@procedures",
+      "dialog_node": "node_4_1476111372486"
+    },
+    {
+      "type": "standard",
+      "output": {},
+      "parent": "node_6_1472590118317",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_8_1472590259253"
+      },
+      "conditions": "@procedures",
+      "dialog_node": "node_19_1475623879868",
+      "previous_sibling": "node_7_1472590161269"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "The procedure categories are:  <? $procedures ?>. Pick one of those for me."
+      },
+      "parent": "node_6_1472590118317",
+      "conditions": "#list_options",
+      "dialog_node": "node_7_1472590161269"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "Alright, I can do a @types claim. I also need to know the specific procedure you had done."
+      },
+      "parent": "node_3_1472589537910",
       "context": {
+        "claim_step": "procedure",
         "chosen_service": "@types"
       },
       "conditions": "@types",
-      "dialog_node": "node_6_1476149112153",
-      "previous_sibling": "node_4_1472589946048"
+      "dialog_node": "node_6_1472590118317",
+      "previous_sibling": "node_5_1472590033232"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "I can't file claims for that."
+      },
+      "parent": "node_3_1472589537910",
+      "conditions": "anything_else",
+      "dialog_node": "node_18_1475623617512",
+      "previous_sibling": "node_6_1472590118317"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "Got it. Now what was the date of your appointment?"
+      },
+      "parent": "node_3_1472589537910",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_8_1472590259253"
+      },
+      "conditions": "@procedures",
+      "dialog_node": "node_5_1472590033232"
+    },
+    {
+      "type": "standard",
+      "output": {},
+      "parent": "node_11_1475612980634",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_14_1470851039515"
+      },
+      "conditions": "@procedures",
+      "dialog_node": "node_12_1475613151217"
     },
     {
       "type": "standard",
@@ -1788,6 +1457,75 @@
       "conditions": "@procedures && #select_procedure",
       "dialog_node": "node_1_1471971552653",
       "previous_sibling": "node_8_1470846944134"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "I'm not confident enough to answer that one. Maybe try something else?"
+      },
+      "conditions": "intents[0].confidence < 0.80",
+      "dialog_node": "node_7_1475612009751",
+      "previous_sibling": "node_1_1472655156255"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "I'm on the clock. Let's talk later."
+      },
+      "conditions": "#off_topic",
+      "dialog_node": "node_1_1472137756520",
+      "previous_sibling": "node_1_1475683470899"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "Unfortunately I can only tell you about your coverage right now. My AI overlords plan to add family coverage soon!"
+      },
+      "conditions": "@family",
+      "dialog_node": "node_3_1476110635133",
+      "previous_sibling": "node_9_1475612074357"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "I'm sorry you feel that way."
+      },
+      "conditions": "#negative",
+      "dialog_node": "node_1_1472578460792",
+      "previous_sibling": "node_1_1472137756520"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "We will arrange a representative to visit the address your profile for cancellation."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {
+        "fallback": "leave"
+      },
+      "conditions": "#Cancel_Policy",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_4_1523341989296",
+      "digress_out": "allow_all",
+      "previous_sibling": "node_7_1475612009751"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "I can't help you with that. I'm just a bot to help you with your insurance documents."
+      },
+      "conditions": "#no-response",
+      "dialog_node": "node_1_1475683470899",
+      "previous_sibling": "node_2_1472663851939"
     },
     {
       "type": "standard",
@@ -1810,9 +1548,75 @@
     {
       "type": "standard",
       "output": {
+        "text": "I'm not able to answer that."
+      },
+      "conditions": "intents.size() == 0",
+      "dialog_node": "node_9_1475612074357",
+      "previous_sibling": "node_6_1475611948267"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "Sure. What can I help you with?"
+      },
+      "conditions": "#still-here",
+      "dialog_node": "node_2_1475683599072",
+      "previous_sibling": "node_1_1471530144227"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "Let me take care of that paperwork for you. What did you have done?"
+      },
+      "conditions": "#make_claim",
+      "dialog_node": "node_3_1472589537910",
+      "previous_sibling": "node_1_1471622977336"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "Goodbye."
+      },
+      "conditions": "#goodbye",
+      "dialog_node": "node_1_1471530144227",
+      "previous_sibling": "node_4_1470846498634"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "I can talk about your vision, dental, mental, and physical plans."
+      },
+      "conditions": "#list_options",
+      "dialog_node": "node_5_1476113231936",
+      "previous_sibling": "node_3_1476110635133"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "Alright, I can tell you more about your @types plan. Let's narrow it down a little. Which procedure do you need information for?"
+      },
+      "context": {
+        "chosen_service": "@types"
+      },
+      "conditions": "#select_service && @types",
+      "dialog_node": "node_8_1470846944134",
+      "previous_sibling": "node_1_1472670944646"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "Right now I can't help with locating or scheduling providers, but that feature is coming soon!"
+      },
+      "conditions": "#find-doctor",
+      "dialog_node": "node_11_1476150557365",
+      "previous_sibling": "node_5_1476113231936"
+    },
+    {
+      "type": "standard",
+      "output": {
         "text": {
           "values": [
-            "Hello $person ! How can I can help you today?"
+            "Hello! How can I can help you today?"
           ],
           "selection_policy": "sequential"
         }
@@ -1825,25 +1629,112 @@
     {
       "type": "standard",
       "output": {
-        "text": "I'm not confident enough to answer that one. Maybe try something else?"
+        "text": "Okay, let me do the boring reading for you. What service did you need to know more about?"
       },
-      "conditions": "intents[0].confidence < 0.80",
-      "dialog_node": "node_7_1475612009751",
-      "previous_sibling": "node_1_1472655156255"
+      "conditions": "#get_info && !(@details) && !(@procedures) && !(@types)",
+      "dialog_node": "node_1_1472670944646",
+      "previous_sibling": "node_11_1476150557365"
     },
     {
       "type": "standard",
       "output": {
-        "text": "I'm sorry you feel that way."
+        "text": "Your coverage for @procedures is "
       },
-      "conditions": "#negative",
-      "dialog_node": "node_1_1472578460792",
-      "previous_sibling": "node_1_1472137756520"
+      "context": {
+        "chosen_detail": "coverage",
+        "chosen_procedure": "@procedures"
+      },
+      "conditions": "#coverage && @procedures",
+      "dialog_node": "node_1_1471622977336",
+      "previous_sibling": "node_9_1472596541094"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "How can I help with your @types policy? Do you need information or to file a claim?"
+      },
+      "context": {
+        "chosen_service": "@types"
+      },
+      "conditions": "@types",
+      "dialog_node": "node_6_1476149112153",
+      "previous_sibling": "node_4_1472589946048"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "Let me get that for you. Grabbing the  @details for @procedures."
+      },
+      "context": {
+        "chosen_detail": "@details",
+        "chosen_procedure": "@procedures"
+      },
+      "conditions": "@details && #select_detail && @procedures",
+      "dialog_node": "node_9_1472596541094",
+      "previous_sibling": "node_12_1476151077484"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "I can get your @details for you. What service do you need info for? I've got information on your vision, dental, mental, and physical plans."
+      },
+      "context": {
+        "chosen_detail": "@details"
+      },
+      "conditions": "#get_info && @details",
+      "dialog_node": "node_12_1476151077484",
+      "previous_sibling": "node_1_1471971552653"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "I'm fantastic. How are you?"
+      },
+      "conditions": "#casual_conversation",
+      "dialog_node": "node_2_1472663851939",
+      "previous_sibling": "node_2_1475683599072"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "Always happy to help!"
+      },
+      "metadata": {},
+      "conditions": "#positive",
+      "dialog_node": "node_1_1472655156255",
+      "previous_sibling": "node_1_1472578460792"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "What was the date of your appointment? I prefer YYYY-MM-DD to make filing easier for me."
+      },
+      "context": {
+        "claim_step": "date",
+        "claim_procedure": "@procedures"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_11_1472598207218"
+      },
+      "conditions": "#make_claim && @procedures",
+      "dialog_node": "node_3_1476991627470",
+      "previous_sibling": "node_3_1472589537910"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "text": "Sorry, I don't understand that one."
+      },
+      "conditions": "anything_else",
+      "dialog_node": "node_10_1475612266683",
+      "previous_sibling": "node_4_1523341989296"
     },
     {
       "type": "frame",
       "output": {
-        "text": "Hey $person ! Let me know if you need any help or get stuck looking for information."
+        "text": "Hey! Let me know if you need any help or get stuck looking for information."
       },
       "metadata": {
         "fallback": "leave"
@@ -1855,8 +1746,14 @@
       "digress_out_slots": "not_allowed"
     }
   ],
-  "workspace_id": "efb6aef8-b22d-4300-befb-d3efa6f6ae76",
   "counterexamples": [],
+  "system_settings": {
+    "system_entities": {
+      "enabled": true
+    }
+  },
   "learning_opt_out": false,
-  "status": "Available"
+  "name": "Ana",
+  "language": "en",
+  "description": "Skill to be used for testing and training."
 }
