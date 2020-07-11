@@ -1,19 +1,8 @@
-# A voice-enabled Android ChatBot powered by IBM Watson
+# A voice-enabled Android ChatBot powered by IBM Watson and my own Costumes 
 
-[![Build Status](https://travis-ci.org/IBM-Cloud/chatbot-watson-android.svg?branch=master)](https://travis-ci.org/IBM-Cloud/chatbot-watson-android)
+![alt text](https://github.com/AnasBawazir/chatbot-watson-android/blob/SmartMethods/photo_2020-07-12_02-24-56.jpg)
 
-Learn how easy it is to build an IBM Watson powered ChatBot running on Android and using Watson Assistant (formerly Conversation),Text-to-Speech, Speech-to-Text Services on IBM Cloud (an open standards, cloud platform for building, running, and managing apps and services).
 
-<p align="center"><img src="images/architecture.png"/></p>
-
-For **step-by-step instructions**, refer this tutorial - [Build a voice-enabled Android chatbot](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-android-watson-chatbot)
-
-The tutorial walks you through the process of defining intents and entities and building a dialog flow for your chatbot to respond to customer queries. You will learn how to enable Speech to Text and Text to Speech services for easy interaction with the Android app.
-
-<p align="center"><img src="images/android_chatbot.png" width="350" /><img src="images/android_watson_chatbot.png" width="350" /></p>
-
-## Solution Tutorials 
-For other solution tutorials, [click here](http://ibm.biz/solution-tutorials)
 ## License
 
 See [License.txt](https://github.com/IBM-Cloud/chatbot-watson-android/blob/master/License.txt) for license information.
