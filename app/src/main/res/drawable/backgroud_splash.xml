@@ -2,12 +2,12 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:drawable="@android:color/white"/>
+        android:drawable="@color/colorPrimaryDark"/>
 
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@mipmap/ic_face"/>
+            android:src="@drawable/logow"/>
 
     </item>
 
