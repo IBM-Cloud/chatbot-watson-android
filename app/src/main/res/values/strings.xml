@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SmartMethods Chabot</string>
+    <string name="app_name">Robot Chatbot</string>
     <string name="what_s_on_your_mind">Enter your message</string>
     <string name="menu_refresh">Refresh</string>
 </resources>
