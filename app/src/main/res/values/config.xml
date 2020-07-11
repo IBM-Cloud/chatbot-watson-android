@@ -17,7 +17,7 @@
     <!--Watson Speech To Text(STT) service credentials-->
     <!-- REPLACE `STT_API_KEY_HERE` with Watson Speech to Text service API Key-->
     <string name="STT_apikey">SCHOI8x_qiTX5-VSCTh68yD7AMgfQx1mVXNkvkPh3KKa</string>
-    
+
     <!-- The URL provided below is for DALLAS region/location -->
     <!-- If the STT service is created in another region/lpcation -->
     <!-- REPLACE the URL with STT URL provided in the service credentials -->
@@ -27,7 +27,7 @@
     <!--Watson Text To Speech(TTS) service credentials-->
     <!-- REPLACE `TTS_API_KEY_HERE` with Watson Text to Speech service API Key-->
     <string name="TTS_apikey">nzOobv2upsdSDGmJ8zmy525lT8Rv77_05sNHD4TtlWeF</string>
-    
+
     <!-- The URL provided below is for DALLAS region/location -->
     <!-- If the TTS service is created in another region/lpcation -->
     <!-- REPLACE the URL with TTS URL provided in the service credentials -->

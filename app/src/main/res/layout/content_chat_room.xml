@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/background"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.vmac.WatBot.MainActivity"
     tools:showIn="@layout/activity_main">
@@ -13,40 +14,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
+        android:background="@color/background"
         android:scrollbars="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:background="@android:color/white"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/message_backgound"
         android:orientation="horizontal"
         android:weightSum="4">
 
+
         <android.support.v7.widget.AppCompatImageButton
             android:id="@+id/btn_record"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
             android:background="@null"
-            android:elevation="0dp"
-            android:paddingLeft="10dp"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_mic" />
-
-        <EditText
-            android:id="@+id/message"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="3"
-            android:background="@null"
-            android:hint="@string/what_s_on_your_mind"
-            android:lines="1"
-            android:paddingLeft="10dp" />
+            android:onClick="getSpeechInput"
+            android:src="@drawable/ic_microphone_line" />
 
         <!--<Button android:id="@+id/btn_send"
             android:layout_width="0dp"
@@ -56,17 +45,27 @@
             android:text="ASK"
             android:textSize="16dp"
             android:textColor="@color/colorPrimary" />-->
+
+        <EditText
+            android:id="@+id/message"
+            android:layout_width="123dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="3"
+            android:background="@null"
+            android:hint="@string/what_s_on_your_mind"
+            android:lines="1"
+            android:paddingLeft="10dp" />
+
         <android.support.v7.widget.AppCompatImageButton
             android:id="@+id/btn_send"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
             android:layout_weight="1"
             android:background="@null"
-            android:elevation="0dp"
-            android:paddingLeft="10dp"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_send" />
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_send_button" />
 
 
     </LinearLayout>

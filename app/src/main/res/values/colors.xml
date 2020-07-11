@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303f9f</color>
+    <color name="colorPrimary">#1f6b7d</color>
+    <color name="colorPrimaryDark">#71a5ae</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="bg_bubble_self">#62caa6</color>
+    <color name="bg_bubble_self">#71a5ae</color>
     <color name="bg_bubble_watbot">#ecf0f1</color>
+    <color name="background">#455a64</color>
 </resources>

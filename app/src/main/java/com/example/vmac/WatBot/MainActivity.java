@@ -2,12 +2,14 @@ package com.example.vmac.WatBot;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -49,6 +51,7 @@ import com.ibm.watson.text_to_speech.v1.model.SynthesizeOptions;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -145,17 +148,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (checkInternetConnection()) {
-                    sendMessage();
+                        sendMessage();
+
                 }
             }
         });
-
-        btnRecord.setOnClickListener(new View.OnClickListener() {
+        // I have changed how the record button works here to google assistant
+        /*btnRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 recordMessage();
             }
-        });
+        });*/
 
         createServices();
         sendMessage();
@@ -221,6 +225,7 @@ public class MainActivity extends AppCompatActivity {
     private void sendMessage() {
 
                         final String inputmessage = this.inputMessage.getText().toString().trim();
+
                         if (!this.initialRequest) {
                             Message inputMessage = new Message();
                             inputMessage.setMessage(inputmessage);
@@ -390,7 +395,7 @@ public class MainActivity extends AppCompatActivity {
                 .inactivityTimeout(2000)
                 .build();
     }
-
+//method to set text in massage box
     private void showMicText(final String text) {
         runOnUiThread(new Runnable() {
             @Override
@@ -454,7 +459,34 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+        //here how to make the record button works with google assistant
+    public void getSpeechInput(View view) {
 
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(intent, 10);
+        } else {
+            Toast.makeText(this, "Your Device Don't Support Speech Input", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case 10:
+                if (resultCode == RESULT_OK && data != null) {
+                    ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    inputMessage.setText(result.get(0));
+                    sendMessage();
+                }
+                break;
+        }
+    }
 
 }
 
