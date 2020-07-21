@@ -26,11 +26,11 @@
 
     <!--Watson Text To Speech(TTS) service credentials-->
     <!-- REPLACE `TTS_API_KEY_HERE` with Watson Text to Speech service API Key-->
-    <string name="TTS_apikey">nzOobv2upsdSDGmJ8zmy525lT8Rv77_05sNHD4TtlWeF</string>
+    <string name="TTS_apikey">-R1R8unJYgnM9rm-xVV12kmYzGNZdlpVG0wSUnVUEkJu</string>
 
     <!-- The URL provided below is for DALLAS region/location -->
     <!-- If the TTS service is created in another region/lpcation -->
     <!-- REPLACE the URL with TTS URL provided in the service credentials -->
-    <string name="TTS_url">https://api.eu-gb.text-to-speech.watson.cloud.ibm.com/instances/6579c331-d89c-4a08-b836-1cff03fa33cf</string>
+    <string name="TTS_url">https://api.eu-gb.text-to-speech.watson.cloud.ibm.com/instances/8bc14944-e671-425a-b792-17d6441fe234</string>
 
 </resources>
