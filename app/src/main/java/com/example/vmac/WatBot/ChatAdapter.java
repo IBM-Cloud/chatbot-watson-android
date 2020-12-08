@@ -73,6 +73,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         .with(iv.getContext())
                         .load(message.getUrl())
                         .into(iv);
+                break;
         }
     }
 
